@@ -1,0 +1,21 @@
+{
+  "short_name": "Fysio app",
+  "name": "Fysio v17: PWA",
+  "start_url": "index.php",
+  "description": "A web application for ...",
+  "icons": [
+    {
+      "src": "images/fysio_icon_192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "images/fysio_icon_512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "background_color": "#cc0033",
+  "theme_color": "#e9e9e9",
+  "display": "standalone"
+}
