@@ -1,4 +1,4 @@
-<title>FysioPWA15</title>
+<title>Fysio App</title>
 
 
   <meta charset="utf-8" />
