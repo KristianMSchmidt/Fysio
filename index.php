@@ -4,6 +4,7 @@
     <?php include "htmlhead.php" ?>
 </head>
 
+
 <body>
      <!-- frontpage -->
      <?php include "pages/frontpage.php" ?>
