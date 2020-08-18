@@ -28,18 +28,22 @@
  
     <!-- page content -->
     <div role="main" class="ui-content">
-        <h3>Måleredskaber og tests </h3>                
-        
-        <ul data-role="listview" data-inset="true">
-            
-            <li><a href="#nakke">Nakke</a></li>
-            <!--
-            <li><a href="#hals">Hals</a></li>
-            <li><a href="#ryg">Ryg</a></li>
-            <li><a href="#knæ">Knæ</a></li>
-            <li><a href="#problemer">To do</a></li>
-            <li><a href="#email_page">email_page</a></li> --> 
-        </ul>
+        <h3>Måleredskaber og tests </h3>     
+        <div id="Krop&funktion" style="display: block">            
+            <ul data-role="listview" data-inset="true">
+                <li><a href="#nakke/ryg">Nakke/ryg</a></li>
+                <li><a href="#skulder">Skulders</a></li>
+                <li><a href="#hofte">Hofteg</a></li>
+                <li><a href="#knæ">Knæ</a></li>
+                <li><a href="#ankel">Ankel</a></li>
+                <li><a href="#balance">Balance</a></li>  
+                <li><a href="#gang">Gang</a></li>  
+                <li><a href="#mobilitet">Mobilitet</a></li>  
+                <li><a href="#funktion">Funktion(niveau/motorisk)</a></li>  
+                <li><a href="#smerte">Smerte</a></li>  
+                <li><a href="#kondition">Kondition</a></li>  
+                <li><a href="#livskvalitet">Livskvalitet</a></li>  
+            </ul>
     </div>
 </div>
     
