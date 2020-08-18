@@ -28,7 +28,7 @@
  
     <!-- page content -->
     <div role="main" class="ui-content">
-        <h3>Fysiske tests </h3>                
+        <h3>Måleredskaber og tests </h3>                
         
         <ul data-role="listview" data-inset="true">
             
