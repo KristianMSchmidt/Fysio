@@ -25,10 +25,6 @@
     <script src= "scripts/formulas.js"></script>
     <script src= "scripts/email/email.js"></script>
 
-    <!-- dette er et forsg, som forklaret her: https://stackoverflow.com/questions/16375557/fixed-header-scrolls-drags-in-jquery-mobile -->
-    <script type="text/javascript">
-        $("body").fixedtoolbar({ tapToggle: false });
-    </script>
 
 
 
