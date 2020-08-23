@@ -1,7 +1,7 @@
-<!-- Start of Nakke -->
-<div data-role="page" id="SBST" data-theme ="a">
+<!-- 10-meter gangtest -->
 
-    
+<div data-role="page" id="tiMGT" data-theme ="a">
+
     <!-- header -->
     <div  data-role="header" 
         data-postition="fixed"
@@ -10,39 +10,44 @@
         <a data-direction = "reverse" id="pageHeader"
         class="ui-btn ui-corner-all ui-btn-icon-notext ui-icon-back" data-rel="back"></a>   
         
-        <h1 id="headerTitle">SBST</h1>
+        <h1 id="headerTitle"></h1>
         
         <img src = "images/dfys-logo4.gif" id = "logo" class = "ui-btn  ui-corner-all 
         ui-btn-icon-notext ui-btn-right"> 
-    </div>  
+    </div>  <!-- end of header -->
+
+
 
     <div role="main" class="ui-content">
-        <h3>STarT Back Screening Tool (SBST)</h3>
+        <h3>10-meter gangtest</h3>
         <form method="post" 
-            id="nakkeTestForm"
+            id="tiMGTForm""
             action = ""
             data-ajax="false"> <!-- I don't use ajax, because form is not submittet-->
             <!-- https://demos.jquerymobile.com/1.2.1/docs/forms/forms-sample.html -->
 
             <!-- input value 1 -->
-            <label for="antalUger">Antal uger med smerter:</label>
-            <input id="antalUger" class="nakkeTest input" type = "number" name= "antalUger" value=""/>
+            <label for="tiMGT_tid1">1. forsøg:</label>
+            <input id="tiMGT_tid1" class="tiMGT input" type = "number" name= "tiMGT_tid1" value=""/>
             <!-- input value 2 -->
-            
-            <label for="laengde">Længden af din nakke (cm):</label>
-            <input id="laengde" class="nakkeTest input" type = "number" name="laengde" value = ""/>
+
+            <!-- input value 2 -->
+            <label for="tiMGT_tid2">2. forsøg:</label>
+            <input id="tiMGT_tid2" class="tiMGT input" type = "number" name= "tiMGT_tid2" value=""/>
+            <!-- input value 2 -->
+
             <!-- input value 3 -->
+            <label for="tiMGT_tid3">3.forsøg:</label>
+            <input id="tiMGT_tid3" class="tiMGT input" type = "number" name= "tiMGT_tid3" value=""/>
             
-            <label for="foedselsaar">Fødselsår:</label>
-            <input id= "foedselsaar" class="nakkeTest input" type = "number" name="foedselsaar" value=""/>
            
             <!-- Beregn -- default type of button is "submit"-->
-            <button type ="button" onclick = "calcButtonHandler('nakkeTest')",
-                     id ='calculateNakkeBtn'>Beregn</button><br> <!-- tænk over button style i jqm-->
+            <button type ="button" onclick = "calcButtonHandler('tiMGT')",
+                    id ='tiMGT_calcBtn'>Beregn</button><br> <!-- tænk over button style i jqm-->
             
         </form>
 
-        <p id="nakkeTestOutput" style = "text-align:center; font-style: italic;"></p>
+        <p id="tiMGTOutput" style = "text-align:center; font-style: italic;"></p>
 
 
         <!-- dette bruges måske af alle mine test-sider, så data-stumpen kan evt includes fra common -->

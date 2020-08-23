@@ -10,8 +10,14 @@
      <?php include "pages/frontpage.php" ?>
 
     <!-- subpages  -->
-    <?php include "pages/tests/nakke.php" ?>    
     <?php include "pages/email.php" ?>
+
+
+    <!-- test pages -->
+    <?php include "pages/tests/tiMGT.php" ?>    
+    <?php include "pages/tests/nakke.php" ?>    
+
+
 
     <!-- load scripts and modules -->
     
@@ -24,8 +30,6 @@
     <script src="scripts/calcButtonHandler.js"></script> 
     <script src= "scripts/formulas.js"></script>
     <script src= "scripts/email/email.js"></script>
-
-
 
 
 </body>

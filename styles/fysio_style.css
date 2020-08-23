@@ -2,6 +2,11 @@
 	color: #cc0033;
 }
 
+/*Dette virker ikke, gad vide hvorfor? Sikkert fordi der er noget jquery-css, som skal overrides*/
+.testLink {
+    font-weight: normal;
+}
+
 /* gør headeren højere*/
 .ui-header {
     padding-top: 14px;  /*default i 1px */

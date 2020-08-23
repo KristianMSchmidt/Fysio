@@ -1,8 +1,11 @@
+const testNames = {
+  tiMGT: "10-meter gangtest"
+}
 
 function calcButtonHandler(testId){
-  //result = formula()
-  
+  console.log(testId);
   result = window[testId + "Formula"]();
+  console.log("result", result)
 
   if(isNaN(result)){
       document.getElementById(testId +'Output').innerHTML = 
@@ -13,7 +16,7 @@ function calcButtonHandler(testId){
       document.getElementById(testId +'Output').innerHTML = "Resultat: " + result;
       let urlWithParams = generate_url(testId);
       document.getElementById('datalink').href = urlWithParams;
-      document.getElementById('emailSubject').value = testId;
+      document.getElementById('emailSubject').value = testNames[testId]; //testId
       document.getElementById('emailContent').value = "Her kan du genfinde de indtastede data: " + urlWithParams;  
       document.getElementById("emailStatusText").innerHTML = "";
       document.getElementById("emailStatusText").style.color="black";
