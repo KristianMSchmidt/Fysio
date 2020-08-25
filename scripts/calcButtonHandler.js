@@ -3,17 +3,17 @@ const testNames = {
 }
 
 function calcButtonHandler(testId){
-  console.log(testId);
   result = window[testId + "Formula"]();
-  console.log("result", result)
-
-  if(isNaN(result)){
+  resultNumber = result["number"];
+  resultUnit = result["unit"]
+ 
+  if(isNaN(resultNumber)){
       document.getElementById(testId +'Output').innerHTML = 
           "Resultatet er ikke beregnet.<br>Kontrollér at alle felter er udfyldt korrekt";
   }
 
   else{
-      document.getElementById(testId +'Output').innerHTML = "Resultat: " + result;
+      document.getElementById(testId +'Output').innerHTML = "Resultat: " + resultNumber + " " +resultUnit;
       let urlWithParams = generate_url(testId);
       document.getElementById('datalink').href = urlWithParams;
       document.getElementById('emailSubject').value = testNames[testId]; //testId
@@ -68,11 +68,13 @@ function generate_url(testId){
 }
 
 function showIfFielsAreInvalid(testId){
+  console.log("HEj fra showFildsAreInvalid")
   //  let targetForm = $('#' + testId + 'Form');
   let inputs = document.getElementsByClassName(testId +' input');
   for (let i = 0; i < inputs.length; i++ ) {
    // inputs[i].style.rder = "red";
-    if(inputs[i].value == ''){
+   console.log(inputs[i].classList)
+    if(inputs[i].value == '' && inputs[i].classList.contains("required")){
       //In this case field is empty or not valid number
       //Last number is transparency. 1=not transparet. Witho some transparency,
       //I keep tthe styling of jquery mobile (shadow etx) & and black numbers look better. 

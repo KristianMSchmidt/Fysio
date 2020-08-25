@@ -15,6 +15,8 @@
 
     <!-- test pages -->
     <?php include "pages/tests/tiMGT.php" ?>    
+    <?php include "pages/tests/tiMGT_about.php" ?>    
+    
     <?php include "pages/tests/nakke.php" ?>    
 
 

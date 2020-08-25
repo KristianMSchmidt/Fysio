@@ -2,6 +2,10 @@
 	color: #cc0033;
 }
 
+.text-center{
+    text-align:center
+}
+
 /*Dette virker ikke, gad vide hvorfor? Sikkert fordi der er noget jquery-css, som skal overrides*/
 .testLink {
     font-weight: normal;
