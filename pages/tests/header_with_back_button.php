@@ -1,9 +1,5 @@
-<!-- Start of Nakke -->
-<div data-role="page" id="tiMGT_about" data-theme ="a">
-
-    
-    <!-- header -->
-    <div  data-role="header" 
+ <!-- header -->
+ <div  data-role="header" 
         data-postition="fixed"
         data-tap-toggle="false">
         
@@ -14,11 +10,5 @@
         
         <img src = "images/dfys-logo4.gif" id = "logo" class = "ui-btn  ui-corner-all 
         ui-btn-icon-notext ui-btn-right"> 
-    </div>  
+</div>  <!-- end of header -->
 
-    <div role="main" class="ui-content">
-        <h3>Om 10-meter-gangtest</h3>
-    </div> <!-- end of content -->
-
-
-</div>

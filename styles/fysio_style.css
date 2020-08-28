@@ -1,6 +1,7 @@
+/*
 .red {
 	color: #cc0033;
-}
+}*/
 
 .text-center{
     text-align:center
@@ -32,8 +33,9 @@ kommaet at det gælder for både venstre
 .ui-header .ui-btn-right  {
     margin-top: 15px;
 }
-
+/*
 h3 {color: #cc0033;}
+*/
 
 /*
 Se her om overrides i JQM 1.4
