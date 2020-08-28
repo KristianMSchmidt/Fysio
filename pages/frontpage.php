@@ -117,7 +117,7 @@
         <li data-role="list-divider"> </li> 
 
         <li><a href="#tiMeterGangTest" style="display:none" class="testLink Gang Funktion Geronto HLI-fys Musku Neuro Rehab" >10-meter gangtest</li></a>
-        <li><a href="#" style="display:none" class="testLink Balance Gang Funktion Geronto HLI-fys Musku Neuro Rehab">2,45m up-and-go-test</li></a>
+        <li><a href="#toMUGT" style="display:none" class="testLink Balance Gang Funktion Geronto HLI-fys Musku Neuro Rehab">2,45m up-and-go-test</li></a>
         <li><a href="#seksMinGangTest" style="display:none" class="testLink Hofte Knæ Gang Funktion Geronto HLI-fys Musku Neuro Rehab">6-minuttersgangtest</li></a>
 
         <li><a href="#" style="display:none" class="testLink Funktion Neuro Rehab">Amyotrophic Lateral Sclerosis Rating Scale (ALS) - Revised</li></a>

@@ -4,6 +4,7 @@ Tilføj eventlisternes på alle input feltere (også køn), som ved ændring af 
 sætter resultatfelterne til "".
 -->
 
+
 <!-- 6-minuttersgangtest -->
 <div data-role="page" id="seksMinGangTest" data-theme ="a">
 
@@ -61,7 +62,7 @@ sætter resultatfelterne til "".
         <!-- dette bruges måske af alle mine test-sider, så data-stumpen kan evt includes fra common -->
         <div id = "seksMinGangTest_email_btn" style="text-align:center; display: none">
             <a href=#email data-role="button" data-icon="arrow-r"
-                data-iconpos="right">Send link til mail</a>
+                data-iconpos="right">Send data</a>
         </div>
 
     </div> <!-- end of content -->

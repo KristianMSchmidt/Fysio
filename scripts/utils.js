@@ -2,6 +2,10 @@ function isNumeric(n){
     return !isNaN(parseFloat(n)) &&isFinite(n);
 }
 
+function roundToTwo(num) {    
+  return +(Math.round(num + "e+2")  + "e-2");
+}
+
 function prepareEmail(testId){
     const testNames = {
         "tiMeterGangTest": "10-meter gangtest",
