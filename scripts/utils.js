@@ -1,3 +1,18 @@
+function arraysMatch(arr1, arr2) {
+
+	// Check if the arrays are the same length
+	if (arr1.length !== arr2.length) return false;
+
+	// Check if all items exist and are in the same order
+	for (var i = 0; i < arr1.length; i++) {
+		if (arr1[i] !== arr2[i]) return false;
+	}
+
+	// Otherwise, return true
+	return true;
+
+};
+
 function isNumeric(n){
     return !isNaN(parseFloat(n)) &&isFinite(n);
 }
@@ -13,8 +28,6 @@ function prepareEmail(testId){
     }
     let urlWithParams = generate_url(testId);
     document.getElementById('emailSubject').value = testNames[testId]; 
-    console.log("testId: ",testId )
-    console.log(testNames[testId])
     document.getElementById('emailContent').value = "Her kan du genfinde de indtastede data: " + urlWithParams;  
     document.getElementById("emailStatusText").innerHTML = "";
     document.getElementById("emailStatusText").style.color="black";
@@ -38,8 +51,7 @@ function generate_url(testId){
       var first_part = url.split("#")[0]; 
     }
     const urlWithParams = first_part + '?' + params + '#' + after_hash;  
-    console.log(urlWithParams);
-  
+    
     return(urlWithParams);
   }
 

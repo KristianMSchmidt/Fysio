@@ -38,6 +38,8 @@
     <script src="scripts/utils.js"></script> 
     <script src= "scripts/email/email.js"></script>
 
+    <script src = "scripts/test.js"></script>
+
 
 </body>
 

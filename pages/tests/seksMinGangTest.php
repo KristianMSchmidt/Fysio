@@ -236,6 +236,9 @@ function seksMinGangTest_beregner(){
 document.querySelectorAll('.'+ "seksMinGangTest" +'.input').forEach(item => {
       item.addEventListener('input', event => {      
           clearResult_seksMinGangTest();
+          document.getElementById("seksMeterGangTestOutput").innerHTML = ""; 
+          document.getElementById("seksMeterGangMeterGangTest_email_btn").style.display = "none";
+
         });
     });
 

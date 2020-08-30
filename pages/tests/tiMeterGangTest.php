@@ -1,4 +1,4 @@
-<!--required kan vist slettes fra class-navn -->
+<!-- required kan vist slettes fra class-navn -->
 <!-- skal der være mulighed for at indtaste antal skridt også??-->
 <!-- detaljer: lige nu fjernes ikke-udfyldte felter ikke når side auto-udfyldes via link -->
 
@@ -52,24 +52,18 @@
             </div>
 
             <div style="text-align:center">
-                <button type = "button" data-inline="true" onclick = "tiMeterGangTest_add()" style="text-align:center"> +  </button>    
-                <button type = "button" data-inline="true" onclick = "tiMeterGangTest_remove()" style="text-align:center"> - </button>    
+                <button id ="add_button" type = "button" data-inline="true" onclick = "tiMeterGangTest_add()" 
+                        style="text-align:center"> +  </button>    
+                <button id = "remove_button" type = "button" data-inline="true" onclick = "tiMeterGangTest_remove()" 
+                        style="text-align:center"> - </button>    
             </div> 
 
-            <button type ="button" onclick = "tiMeterGangTest_beregner()">Beregn</button><br>
+            <button id="tiMeterGangTest_beregn_knap" type ="button" onclick = "tiMeterGangTest_beregner()">Beregn</button><br>
 
         </form>
 
-
-        <!-- dette bruges måske af alle mine test-sider, så kode-stumpen kan evt includes fra common -->
-        <!-- fejlmeddelelse -->
-        <p id="tiMeterGangTest_error" style="text-align:center; color:red"></p> 
-        <!-- Resultat-->
-        <p id="tiMeterGangTestOutput"></p>
-        <!-- email button -->
-        <div id = "tiMeterGangTest_email_btn" style="text-align:center; display: none">
-            <a href=#email data-role="button" data-icon="arrow-r" data-iconpos="right">Send data</a>
-        </div>
+        <!-- output og email_btn area -->
+        <?php include 'snippets/output.php' ?>
 
     </div> <!-- end of content -->
 </div> <!-- end of page -->
@@ -86,11 +80,13 @@ function tiMeterGangTest_add(){
         if ((current_element.style.display == "none") && (has_added == false)){
             current_element.style.display = "block";
             has_added = true
+            document.getElementById("tiMeterGangTestOutput").innerHTML = ""; 
+            document.getElementById("tiMeterGangTest_email_btn").style.display = "none";
         }
     }
 };
 
-function tiMeterGangTest_remove(){
+function tiMeterGangTest_remove(){  
     let has_removed = false;
     let current_element;
     for(i=3; i>1; i--){
@@ -98,6 +94,8 @@ function tiMeterGangTest_remove(){
         if ((current_element.style.display == "block") && (has_removed == false)){
             current_element.style.display = "none";
             has_removed = true;
+            document.getElementById("tiMeterGangTestOutput").innerHTML = "";
+            document.getElementById("tiMeterGangTest_email_btn").style.display = "none";
         }
     }
 };
@@ -109,6 +107,7 @@ function clearResult_tiMeterGangTest(){
 }
 
 function tiMeterGangTest_beregner(){
+ 
     document.getElementById("tiMeterGangTest_error").style.display = "block";
     document.getElementById("tiMeterGangTestOutput").innerHTML = "";
 
@@ -116,12 +115,13 @@ function tiMeterGangTest_beregner(){
     let tid
 
     for(i=0; i<3; i++){
+
         tid = parseFloat(document.getElementById('tiMeterGangTest_tid' + (i+1)).value);
         if (document.getElementById('tiMeterGangTest_input'+(i+1)).style.display == "none"){
             break;
         }
         if (!isNumeric(tid)){
-            document.getElementById("tiMeterGangTest_error").innerHTML=" Tidsforbruget i " + (i+1) + ". forsøg skal angives i sekunder";
+            document.getElementById("tiMeterGangTest_error").innerHTML="Tidsforbruget i " + (i+1) + ". forsøg skal angives i sekunder";
             return
             
         }
@@ -136,6 +136,7 @@ function tiMeterGangTest_beregner(){
         return
     }
     else{
+
         let korteste_tid = Math.min(...tider);
         
         let result = roundToTwo(10/korteste_tid);
@@ -146,8 +147,10 @@ function tiMeterGangTest_beregner(){
 
         document.getElementById("tiMeterGangTest_email_btn").style.display = "block";
         prepareEmail("tiMeterGangTest");
+        
+        //Return for testing purposes
+        return result
     }
-  
 }
 
 
@@ -156,7 +159,9 @@ function tiMeterGangTest_beregner(){
 document.querySelectorAll('.'+ "tiMeterGangTest" +'.input').forEach(item => {
       item.addEventListener('input', event => {      
           clearResult_tiMeterGangTest();
+          document.getElementById("tiMeterGangTest_email_btn").style.display = "none";
         });
     }); 
     
+
 </script>
