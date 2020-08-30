@@ -1,79 +1,12 @@
-<!-- 
-Find reference på formlerne
-Tilføj eventlisternes på alle input feltere (også køn), som ved ændring af værdi
-sætter resultatfelterne til "".
--->
-
-
-<!-- 6-minuttersgangtest -->
-<div data-role="page" id="seksMinGangTest" data-theme ="a">
-
-    <!-- header -->
-    <?php include 'header_with_back_button.php' ?>
-
-    <!-- content -->
-    <div role="main" class="ui-content">
-
-        <h3>6-minuttersgangtest</h3>
-        <p>6-minuttersgangtest, 6MWT, vurderer funktionstilstand hos svage og &#230;ldre med nedsat funktionsevne eller hos personer med kunstig hofte eller kn&#230;.</p>
-               
-        <a href=#seksMinGangTest_about data-role="button" data-icon="arrow-r" data-iconpos="right">Læs om testen</a>
-
-        <form method="post" 
-              name="seksmMinGangTestForm" 
-              id="seksMinGangTestForm" 
-              action="" 
-              data-ajax="false">
-
-            <fieldset data-role="controlgroup" data-mini="true">
-                <legend>Køn:</legend>
-                <label for="seksMinGangTest-radio-choice-1">Mand</label>
-                <input type="radio" class="seksMinGangTest input required" onchange = "clearResult_seksMinGangTest()" name="seksMinGangTest_gender" id="seksMinGangTest-radio-choice-1" value="mand" checked="checked">
-                <label for="seksMinGangTest-radio-choice-2">Kvinde</label>
-                <input type="radio" class="seksMinGangTest input required" onchange = "clearResult_seksMinGangTest()" name="seksMinGangTest_gender" id="seksMinGangTest-radio-choice-2" value="kvinde">
-            </fieldset>
-        
-            <label for="seksMinGangTest_alder">Alder:</label>
-            <input id="seksMinGangTest_alder" class="seksMinGangTest input required" placeholder = "Angiv alder i hele år" type = "number" name="seksMinGangTest_alder" value=""/>
-                
-      
-            <label for="seksMinGangTest_vægt">Vægt (kg):</label>
-            <input id="seksMinGangTest_vægt" class="seksMinGangTest input required" placeholder = "Angiv vægt i hele kg" type = "number" name="seksMinGangTest_vægt" value=""/>
-        
-            <label for="seksMinGangTest_vægt">Højde (cm):</label>
-            <input id="seksMinGangTest_højde" class="seksMinGangTest input required" placeholder = "Angiv højde i hele cm" type = "number" name="seksMinGangTest_højde" value=""/>
-        
-
-            <label for="seksMinGangTest_distance">Gangdistance (meter):</label>
-            <input id="seksMinGangTest_distance" class="seksMinGangTest input required" placeholder = "Hvor langt gik patienten?" type = "number" name=seksMinGangTest_distance value=""/>
-            
-            <!-- default type of button is "submit"-->
-            <button type ="button" onclick = "seksMinGangTest_beregner()">Beregn</button><br>
-        </form>
-
-        
-        <!-- fejlmeddelelse -->
-        <p id="seksMinGangTest_error" style="text-align:center; color:red"></p> 
-
-        <!-- Resultat-->
-        <p id="seksMinGangTest_forventet"></p>
-        <p id="seksMinGangTestOutput"></p>
-
-        <!-- dette bruges måske af alle mine test-sider, så data-stumpen kan evt includes fra common -->
-        <div id = "seksMinGangTest_email_btn" style="text-align:center; display: none">
-            <a href=#email data-role="button" data-icon="arrow-r"
-                data-iconpos="right">Send data</a>
-        </div>
-
-    </div> <!-- end of content -->
-</div> <!-- end of page -->
-
-<script>
-
+// Jeg skal finde reference på formlerne og tjkke dem. 
+// Jeg skal undersøge, hvilke inputværdier, som giver mening ift rimelig forventet distance
+// Jeg skal implementere flere tests
 function clearResult_seksMinGangTest(){
     document.getElementById("seksMinGangTestOutput").innerHTML = "";
     document.getElementById("seksMinGangTest_forventet").innerHTML = "";      
     document.getElementById("seksMinGangTest_error").innerHTML = "";
+    document.getElementById("seksMinGangTest_generate_email_btn").style.display="none";
+
 }
 
 function seksMinGangTest_beregner(){
@@ -82,13 +15,12 @@ function seksMinGangTest_beregner(){
     document.getElementById("seksMinGangTestOutput").innerHTML = "";
 
     let gender = document.querySelector('input[name="seksMinGangTest_gender"]:checked').value;
-    console.log(gender)
 
     // Handle age input
     let age = parseInt(document.getElementById('seksMinGangTest_alder').value);
-    console.log(age);
+
     if (!isNumeric(age)){
-        document.getElementById("seksMinGangTest_error").innerHTML ="Indtast patientens alder i hele antal år";
+        document.getElementById("seksMinGangTest_error").innerHTML ="Indtast patientens alder i hele år";
         //document.getElementById("seksMinGangTest_alder").value="";
         //document.getElementById("seksMinGangTest_alder").style.backgroundColor="rgba(255,145,173,0.3)";
         //document.getElementById("seksMinGangTest_alder").focus();
@@ -192,14 +124,12 @@ function seksMinGangTest_beregner(){
     // for hvilke værdier af alder, vægt også giver formlerne overhovedet mening??
     if (gender == "mand"){
         expected = Math.max(0, Math.round((7.57 * height) - (5.02 * age) - (1.76 * weight) - 309));
-        console.log("exp mand", expected)
     }
     else{ 
         //kvinder
         //hvorfor round her?? 
         expected = Math.round((2.11 * height) - (2.29 * weight) - (5.78 * age) + 667);
         expected = Math.max(0, expected);
-        console.log("exp kvinde", expected)
 
     }
     document.getElementById("seksMinGangTest_forventet").innerHTML = "Forventet gangdistance for raske:   " + expected + " m.";
@@ -225,21 +155,19 @@ function seksMinGangTest_beregner(){
     else{
         expectedpct =  Math.round(distance / expected * 100)
     } 
-    document.getElementById("seksMinGangTestOutput").innerHTML = "Procent af forventet gangdistance:  " + expectedpct + "%.";
+    document.getElementById("seksMinGangTestOutput").innerHTML = "Procent af  <br /> forventet gangdistance:  " + expectedpct + "%.";
     document.getElementById("seksMinGangTest_error").style.display = "none";
-    
-    document.getElementById("seksMinGangTest_email_btn").style.display = "block";
+    document.getElementById("seksMinGangTest_generate_email_btn").style.display = "block";
     prepareEmail("seksMinGangTest");
+
 }
 
 // Make sure that result gets deleted when input value is changed. 
 document.querySelectorAll('.'+ "seksMinGangTest" +'.input').forEach(item => {
       item.addEventListener('input', event => {      
           clearResult_seksMinGangTest();
-          document.getElementById("seksMeterGangTestOutput").innerHTML = ""; 
-          document.getElementById("seksMeterGangMeterGangTest_email_btn").style.display = "none";
-
+          document.getElementById("seksMinGangTestOutput").innerHTML = ""; 
+          document.getElementById("seksMinGangTest_generate_email_btn").style.display = "none";
         });
     });
 
-</script>

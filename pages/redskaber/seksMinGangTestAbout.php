@@ -1,10 +1,9 @@
-
 <!-- Start of Nakke -->
-<div data-role="page" id="seksMinGangTest_about" data-theme ="a">
-
-    <!-- header -->
-    <?php include 'header_with_back_button.php' ?>
-
+<div data-role="page" id="seksMinGangTestAbout" data-theme ="a">
+        
+   <!-- header -->
+   <?php include "commons/header_with_back_button.php" ?>
+   
     <!-- content -->    
     <div role="main" class="ui-content">
         <h2>Om 6-minuttersgangtest</h2>
@@ -20,6 +19,5 @@
         </div>        
 
     </div> <!-- end of content -->
-
 
 </div>

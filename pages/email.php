@@ -6,18 +6,7 @@ fx making link active.... https://www.webhostingtalk.com/showthread.php?t=416467
 <div data-role="page" id="email" data-theme ="a"> 
 
     <!-- header -->
-    <div  data-role="header" 
-        data-postition="fixed"
-        data-tap-toggle="false">
-        
-        <a data-direction = "reverse" id="pageHeader"
-        class="ui-btn ui-corner-all ui-btn-icon-notext ui-icon-back" data-rel="back"></a>   
-        
-        <h1 id="headerTitle">Email</h1>
-        
-        <img src = "images/dfys-logo4.gif" id = "logo" class = "ui-btn  ui-corner-all 
-        ui-btn-icon-notext ui-btn-right"> 
-    </div>  
+    <?php include 'redskaber/commons/header_with_back_button.php' ?>
     
   
     <!-- content -->
