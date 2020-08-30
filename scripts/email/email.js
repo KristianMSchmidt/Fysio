@@ -22,9 +22,9 @@ function sendEmailBtnHandler(){
     }
 
     document.getElementById("emailStatusText").innerHTML = ""; 
-    document.getElementById("emailStatusText").style.color="black";
-    document.getElementById("userEmailAddress").style.backgroundColor="transparent";
-    document.getElementById("emailContent").style.backgroundColor="transparent";
+    document.getElementById("emailStatusText").style.color = "black";
+    document.getElementById("userEmailAddress").style.backgroundColor = "transparent";
+    document.getElementById("emailContent").style.backgroundColor = "transparent";
 
 
     //after "send email button is pressed" we should remove statustext and reset color
@@ -95,7 +95,7 @@ function sendEmailBtnHandler(){
         
                 document.getElementById("emailStatusText").innerHTML = response;
             })
-            .fail(function() {
+            .fail(function(){
                 console.log("Ajax error. Perhaps you are off-line? ");
                 document.getElementById("emailStatusText").innerHTML = "Mail not sent. Perhaps you are offline?";
             })
@@ -104,7 +104,6 @@ function sendEmailBtnHandler(){
             });
         break;
     }
-
 }
     
 

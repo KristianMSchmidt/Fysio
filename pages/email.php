@@ -22,7 +22,8 @@ fx making link active.... https://www.webhostingtalk.com/showthread.php?t=416467
   
     <!-- content -->
     <div role="main" class="ui-content">
-        <h3>Send email</h3>
+        <h3>
+        email</h3>
                 
         <!-- Input -->
         <form id="email_form">

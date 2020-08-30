@@ -2,6 +2,7 @@
 <html>
 <head>
     <?php include "htmlhead.php" ?>
+
 </head>
 
 
@@ -10,8 +11,22 @@
      <?php include "pages/frontpage.php" ?>
 
     <!-- subpages  -->
-    <?php include "pages/tests/nakke.php" ?>    
     <?php include "pages/email.php" ?>
+
+
+    <!-- test pages -->
+    <?php include "pages/tests/tiMeterGangTest.php" ?>    
+    <?php include "pages/tests/tiMeterGangTest_about.php" ?>   
+
+    <?php include "pages/tests/seksMinGangTest.php" ?>    
+    <?php include "pages/tests/seksMinGangTest_about.php" ?>    
+
+    <?php include "pages/tests/toMeterUGT.php" ?>
+    <?php include "pages/tests/toMeterUGT_about.php" ?>
+    
+    <?php include "pages/tests/nakke.php" ?>    
+
+
 
     <!-- load scripts and modules -->
     
@@ -20,16 +35,10 @@
     <script src="scripts/sw/service_worker.js" type="module"></script> -->
     
     <script src="scripts/session.js" type="module"></script> 
-
-    <script src="scripts/calcButtonHandler.js"></script> 
-    <script src= "scripts/formulas.js"></script>
+    <script src="scripts/utils.js"></script> 
     <script src= "scripts/email/email.js"></script>
 
-    <!-- dette er et forsg, som forklaret her: https://stackoverflow.com/questions/16375557/fixed-header-scrolls-drags-in-jquery-mobile -->
-    <script type="text/javascript">
-        $("body").fixedtoolbar({ tapToggle: false });
-    </script>
-
+    <script src = "scripts/test.js"></script>
 
 
 </body>
