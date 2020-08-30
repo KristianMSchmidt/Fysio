@@ -65,7 +65,7 @@ function showIfFielsAreInvalid(testId){
     for (let i = 0; i < inputs.length; i++ ) {
      // inputs[i].style.rder = "red";
      console.log(inputs[i].classList)
-      if(inputs[i].value == '' && inputs[i].classList.contains("required")){
+      if(inputs[i].value == ''){
         //In this case field is empty or not valid number
         //Last number is transparency. 1=not transparet. Witho some transparency,
         //I keep tthe styling of jquery mobile (shadow etx) & and black numbers look better. 

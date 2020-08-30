@@ -1,7 +1,7 @@
-<div data-role="page" id="tiMeterGangTest_about" data-theme ="a">
- 
+<div data-role="page" id="tiMeterGangTestAbout">
+
     <!-- header -->
-    <?php include 'header_with_back_button.php' ?>
+    <?php include "commons/header_with_back_button.php" ?>
 
     <!-- content -->
     <div role="main" class="ui-content">

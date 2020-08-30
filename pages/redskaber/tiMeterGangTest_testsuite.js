@@ -1,4 +1,4 @@
-function test_tiMeterGangTest(){
+export function tiMeterGangTest_testSuite(){
 
     function reset(){
         document.getElementById("tiMeterGangTest_tid1").value = ""
@@ -11,7 +11,7 @@ function test_tiMeterGangTest(){
         document.getElementById("tiMeterGangTest_error").innerHTML = "";
         document.getElementById("tiMeterGangTest_error").style.display = "block";
         document.getElementById("tiMeterGangTestOutput").style.display = "block";
-        document.getElementById("tiMeterGangTest_email_btn").style.display = "none";
+        document.getElementById("generate_email_btn").style.display = "none";
     }
     
     let report = {
@@ -100,8 +100,8 @@ function test_tiMeterGangTest(){
         reset();
         document.getElementById("tiMeterGangTest_tid1").value = 7
         tiMeterGangTest_beregner();
-        actual = document.getElementById("tiMeterGangTest_error").innerHTML;
-        expected = "Tidsforbruget i 2. forsøg skal angives i sekunder";
+        let actual = document.getElementById("tiMeterGangTest_error").innerHTML;
+        let expected = "Tidsforbruget i 2. forsøg skal angives i sekunder";
            
         report["results"].push(
             {
@@ -119,8 +119,8 @@ function test_tiMeterGangTest(){
         document.getElementById("tiMeterGangTest_tid1").value = -4;
         tiMeterGangTest_beregner();
 
-        actual = document.getElementById("tiMeterGangTest_error").innerHTML;
-        expected = "Du har angivet et urealistisk tidsforbrug i 1. forsøg." 
+        let actual = document.getElementById("tiMeterGangTest_error").innerHTML;
+        let expected = "Du har angivet et urealistisk tidsforbrug i 1. forsøg." 
             
         report["results"].push(
             {
@@ -140,9 +140,9 @@ function test_tiMeterGangTest(){
         document.getElementById("tiMeterGangTest_tid3").value = 2
         document.getElementById("remove_button").click();
         
-        actual = tiMeterGangTest_beregner();
-
-        expected = 2;
+        let actual = tiMeterGangTest_beregner();
+        let expected = 2;
+        
         report["results"].push(
             {
             "expected" : expected,
@@ -162,8 +162,8 @@ function test_tiMeterGangTest(){
 
         document.getElementById('tiMeterGangTest_beregn_knap').click();
 
-        actual = document.getElementById("tiMeterGangTest_error").innerHTML;
-        expected = "Du har angivet et urealistisk tidsforbrug i 3. forsøg." 
+        let actual = document.getElementById("tiMeterGangTest_error").innerHTML;
+        let expected = "Du har angivet et urealistisk tidsforbrug i 3. forsøg." 
  
         report["results"].push(
             {
@@ -184,8 +184,8 @@ function test_tiMeterGangTest(){
 
         document.getElementById('tiMeterGangTest_beregn_knap').click();
 
-        actual = document.getElementById("tiMeterGangTest_error").innerHTML;
-        expected = "Du har angivet et urealistisk tidsforbrug i 2. forsøg." 
+        let actual = document.getElementById("tiMeterGangTest_error").innerHTML;
+        let expected = "Du har angivet et urealistisk tidsforbrug i 2. forsøg." 
  
         report["results"].push(
             {
@@ -204,12 +204,12 @@ function test_tiMeterGangTest(){
         document.getElementById("tiMeterGangTest_tid2").value = 5
         document.getElementById("tiMeterGangTest_tid3").value = 2
 
-        before = document.getElementById("tiMeterGangTest_email_btn").style.display;
+        let before = document.getElementById("generate_email_btn").style.display;
         document.getElementById('tiMeterGangTest_beregn_knap').click();
-        after =  document.getElementById("tiMeterGangTest_email_btn").style.display;
+        let after =  document.getElementById("generate_email_btn").style.display;
 
-        expected = ['none', 'block'];
-        actual = [before, after];
+        let expected = ['none', 'block'];
+        let actual = [before, after];
 
         report["results"].push(
             {
@@ -230,8 +230,8 @@ function test_tiMeterGangTest(){
         document.getElementById("remove_button").click();
         document.getElementById("remove_button").click();
         
-        actual = tiMeterGangTest_beregner();
-        expected = 2;
+        let actual = tiMeterGangTest_beregner();
+        let expected = 2;
 
         report["results"].push(
             {
@@ -250,14 +250,13 @@ function test_tiMeterGangTest(){
         document.getElementById("tiMeterGangTest_tid1").value = 5
         document.getElementById("tiMeterGangTest_tid2").value = 4
         document.getElementById("tiMeterGangTest_tid3").value = 3
-        
-        
+    
         document.getElementById('tiMeterGangTest_beregn_knap').click();
 
         document.getElementById("tiMeterGangTest_tid1").dispatchEvent(new Event('input', { bubbles: true }));
         
-        expected = "";
-        actual = document.getElementById("tiMeterGangTestOutput").innerHTML;
+        let expected = "";
+        let actual = document.getElementById("tiMeterGangTestOutput").innerHTML;
 
         report["results"].push(
             {
@@ -268,35 +267,25 @@ function test_tiMeterGangTest(){
     }
     test12();
 
+    function test13(){        
+        reset();
+        document.getElementById("tiMeterGangTest_tid1").value = 5
+        document.getElementById("tiMeterGangTest_tid2").value = 4
+        document.getElementById("tiMeterGangTest_tid3").value = 3
+        document.getElementById("tiMeterGangTest_beregn_knap").click();
+
+        let actual = document.getElementById("emailSubject").value;
+        let expected = "10-meter gangtest";    
+ 
+        report["results"].push({
+            "expected" : expected,
+            "actual" : actual
+            }
+        ); 
+    }
+    test13();
+
     // Do this when all tests are run
     reset();
     return report;
 }
-
-
-
-function run_test_suite(suiteName){
-    report = suiteName();
-    let expected, actual
-    let all_passed = true;
-    for(let i=0; i<report["results"].length; i++){
-        expected = report["results"][i]["expected"];
-        actual = report["results"][i]["actual"];
-
-        if(Array.isArray(expected)){
-            if(!arraysMatch(expected, actual)){
-                all_passed = false;
-                console.log(`${report["testName"]} Test #${i + 1} Failed. Expected:${expected} Actual:${actual}`);
-            } 
-        }
-        else if(expected !== actual){
-            all_passed = false;
-            console.log(`${report["testName"]} Test #${i + 1} Failed. Expected:${expected} Actual:${actual}`);
-        }
-    }
-    if(all_passed){
-        console.log(`Ran ${report['results'].length} tests. All passed :=)`)
-    }
-}
-
-run_test_suite(test_tiMeterGangTest);
