@@ -62,7 +62,6 @@ function tiMeterGangTest_beregner(){
         return
     }
     else{
-
         let korteste_tid = Math.min(...tider);
         
         let result = roundToTwo(10/korteste_tid);

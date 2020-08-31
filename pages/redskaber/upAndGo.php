@@ -1,9 +1,5 @@
-<!-- skal der være mulighed for at indtaste antal skridt også??-->
-<!-- detaljer: lige nu fjernes ikke-udfyldte felter ikke når side auto-udfyldes via link -->
-
-
-<!-- 10-meter gangtest -->
-<div data-role="page" id="tiMeterGangTest" data-theme ="a">
+<!-- 2,45m up-and-go-test -->
+<div data-role="page" id="upAndGo" data-theme ="a">
 
     <!-- header -->
     <?php include "commons/header_with_back_button.php" ?>

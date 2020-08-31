@@ -285,6 +285,24 @@ export function tiMeterGangTest_testSuite(){
     }
     test13();
 
+    function test14(){        
+        reset();
+        document.getElementById("tiMeterGangTest_tid1").value = 33
+        document.getElementById("tiMeterGangTest_tid2").value = 445
+        document.getElementById("tiMeterGangTest_tid3").value = 55
+        document.getElementById("tiMeterGangTest_beregn_knap").click();
+
+        let actual = document.getElementById('emailContent').value.split("?")[1];
+        let expected = generate_url("tiMeterGangTest").split("?")[1];
+
+        report["results"].push({
+            "expected" : expected,
+            "actual" : actual
+            }
+        ); 
+    }
+    test14();
+    
     // Do this when all tests are run
     reset();
     return report;

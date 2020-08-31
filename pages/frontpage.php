@@ -31,25 +31,22 @@
     </div>  
     
 
-    <!-- page content -->
-
-   
+    <!-- page content -->   
     <div role="main" class="ui-content">
         <h3>Måleredskaber og test</h3>     
+    
 
-        
-
-<!--
-<form>
-    <fieldset data-role="controlgroup" data-theme="b" data-type="horizontal">
-        <legend>Horizontal:</legend>
-        <input type="radio" name="radio-choice-t-6" id="radio-choice-t-6a" value="on" checked="checked">
-        <label for="radio-choice-t-6a">Alle</label>
-        <input type="radio" name="radio-choice-t-6" id="radio-choice-t-6b" value="off">
-        <label for="radio-choice-t-6b">Krop & Funktion</label>
-<input type="radio" name="radio-choice-t-6" id="radio-choice-t-6c" value="other">
-<label for="radio-choice-t-6c">Specialer</label></fieldset>
-</form> -->
+        <!--
+        <form>
+            <fieldset data-role="controlgroup" data-theme="b" data-type="horizontal">
+                <legend>Horizontal:</legend>
+                <input type="radio" name="radio-choice-t-6" id="radio-choice-t-6a" value="on" checked="checked">
+                <label for="radio-choice-t-6a">Alle</label>
+                <input type="radio" name="radio-choice-t-6" id="radio-choice-t-6b" value="off">
+                <label for="radio-choice-t-6b">Krop & Funktion</label>
+        <input type="radio" name="radio-choice-t-6" id="radio-choice-t-6c" value="other">
+        <label for="radio-choice-t-6c">Specialer</label></fieldset>
+        </form> -->
 
 
         <form>
@@ -250,7 +247,11 @@
 
         <li><a href="#" style="display:none" class="testLink Nakke/ryg Smerte Musku PsPs">Örebro Muculoskeletal Pain Questionnaire</a></li>
         </ul>        
+   
+    <p id="debug_info" style="color:red; text-align:center">Debug mode: </p>
+   
     </div>
+
 </div>
 
    

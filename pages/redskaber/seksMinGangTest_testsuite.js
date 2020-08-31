@@ -164,7 +164,33 @@ export function seksMinGangTest_testSuite(){
         ); 
     }
     test6();
-    
+ 
+    function test7(){        
+        reset();
+        window.location.href = 'http://localhost/source/Fysio/#seksMinGangTest';  
+
+        document.getElementById("seksMinGangTest_alder").value = "56"
+        document.getElementById("seksMinGangTest_vægt").value = "100"
+        document.getElementById("seksMinGangTest_højde").value = "145"
+        document.getElementById("seksMinGangTest_distance").value = "300"
+
+        document.getElementById("seksMinGangTest_beregn_knap").click();
+
+        let actual = document.getElementById('emailContent').value.split("?")[1];
+       
+        let expected = "seksMinGangTest_gender=mand&seksMinGangTest_alder=56&seksMinGangTest_v%C3%A6gt=100&seksMinGangTest_h%C3%B8jde=145&seksMinGangTest_distance=300#seksMinGangTest"
+        
+        report["results"].push({
+            "expected" : expected,
+            "actual" : actual
+            }
+        ); 
+
+        window.location.href = 'http://localhost/source/Fysio';  
+
+    }
+    //test7();
+
     // Do this when all tests are run
     reset();
     return report;

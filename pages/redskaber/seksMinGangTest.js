@@ -155,7 +155,7 @@ function seksMinGangTest_beregner(){
     else{
         expectedpct =  Math.round(distance / expected * 100)
     } 
-    document.getElementById("seksMinGangTestOutput").innerHTML = "Procent af  <br /> forventet gangdistance:  " + expectedpct + "%.";
+    document.getElementById("seksMinGangTestOutput").innerHTML = "Procent af forventet gangdistance:  " + expectedpct + "%.";
     document.getElementById("seksMinGangTest_error").style.display = "none";
     document.getElementById("seksMinGangTest_generate_email_btn").style.display = "block";
     prepareEmail("seksMinGangTest");
