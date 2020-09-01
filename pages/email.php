@@ -18,11 +18,11 @@ fx making link active.... https://www.webhostingtalk.com/showthread.php?t=416467
         <form id="email_form">
 
             <label for="userEmailAddress">Tilføj/rediger email-adresse</label>   
-            <input id="userEmailAddress" type="text" class = "email input" name="userEmail" value="" size="">
+            <input id="userEmailAddress" type="text" class = "email input" name="userEmail" value="" size=""/>
             
             <!-- name= hidden and autoconplete = false to prevent autocompletion with email-adress-->
             <label for="emailSubject">Tilføj/rediger emne</label>          
-            <input id="emailSubject" type="text" class = "email input" autocomplete="false" name="hidden">
+            <input id="emailSubject" type="text" class = "email input" autocomplete="false" name="hidden"/>
             
             <label for="emailContent">Tilføj/rediger indhold af email</label>          
             <textarea rows ="5" cols="50" id="emailContent" class = "email input" name="emailContent"></textarea>
