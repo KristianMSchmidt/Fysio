@@ -1,5 +1,5 @@
 <!-- Start of Nakke -->
-<div data-role="page" id="seksMinGangTestAbout" data-theme ="a">
+<div data-role="page" id="seksMinGangAbout" data-theme ="a">
         
    <!-- header -->
    <?php include "commons/header_with_back_button.php" ?>

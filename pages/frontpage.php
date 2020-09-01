@@ -1,17 +1,6 @@
 <!-- Frontpage -->
 <div data-role="page" id="frontpage" data-theme ="a">
 
-    <!-- Menu panel -->
-    <div data-role="panel" data-position = "left" id="mypanel">
-        <p>
-        Dansk Selskab for Fysioterapi er ansvarlig for vurdering af test og måleredskaber. Siden bliver løbende opdateret med nye måleredskaber og opdatering af de eksisterende måleredskaber.
-        </p>
-        <a href="https://kimarokko.000webhostapp.com">Hjemmeside</a>
-        <p>Logo </p>
-        <p>Kontakt</p>
-        <p>Om appen</p>
-    </div><!-- Menu panel -->
-
     <!-- header -->
     <div  data-role="header" 
         data-postition="fixed"
@@ -30,6 +19,17 @@
         ui-btn-icon-notext ui-btn-right"> 
     </div>  
     
+    <!-- Menu panel -->
+    <div data-role="panel" data-position = "left" id="mypanel">
+        <p>
+        Dansk Selskab for Fysioterapi er ansvarlig for vurdering af test og måleredskaber. Siden bliver løbende opdateret med nye måleredskaber og opdatering af de eksisterende måleredskaber.
+        </p>
+        <a href="https://kimarokko.000webhostapp.com">Hjemmeside</a>
+        <p>Logo </p>
+        <p>Kontakt</p>
+        <p>Om appen</p>
+    </div><!-- Menu panel -->
+
 
     <!-- page content -->   
     <div role="main" class="ui-content">
@@ -107,19 +107,18 @@
             <input id ="searchInput" placeholder="Søg i alle målereskaber" value = ""/> 
         <form>
 
-
         <!-- LINK TIL SAMTLIGE TEST I ALFABETISK RÆKKEFØLGE -->
         <ul data-role="listview" data-inset="true" date-theme ="a">
         
-        <li data-role="list-divider"> </li> 
+        <li data-role="list-divider"></li> 
 
-        <li><a href="#tiMeterGangTest" style="display:none" class="testLink Gang Funktion Geronto HLI-fys Musku Neuro Rehab" >10-meter gangtest</a></li>
-        <li><a href="#seksMinGangTest" style="display:none" class="testLink Hofte Knæ Gang Funktion Geronto HLI-fys Musku Neuro Rehab">6-minuttersgangtest</a></li>
-        <li><a href="#" style="display:none" class="testLink Balance Gang Funktion Geronto HLI-fys Musku Neuro Rehab">2,45m up-and-go-test</a></li>
- 
-        <li><a href="#" style="display:none" class="testLink Funktion Neuro Rehab">Amyotrophic Lateral Sclerosis Rating Scale (ALS) - Revised</a></li>
-        <li><a href="#" style="display:none" class="testLink Neuro Pædiatri Rehab">Alberta Infant Motor Scale (AIMS)</a></li>
-        <li><a href="#" style="display:none" class="testLink Funktion Neuro Rehab">Action Research Arm Test (ARAT)</a></li>
+        <li><a href="#tiMeterGang" style="display:none" class="testLink Gang Funktion Geronto HLI-fys Musku Neuro Rehab" id="linkTilTiMeterGang">10-meter gangtest</a></li>
+        <li><a href="#seksMinGang" style="display:none" class="testLink Hofte Knæ Gang Funktion Geronto HLI-fys Musku Neuro Rehab" id="linkTilSeksMinGang">6-minuttersgangtest</a></li>
+        <li><a href="#upAndGo" style="display:none" class="testLink Balance Gang Funktion Geronto HLI-fys Musku Neuro Rehab" id="linkTilUpAndGo">2,45m up-and-go-test</a></li>
+
+        <li><a href="#ALS" style="display:none" class="testLink Funktion Neuro Rehab">Amyotrophic Lateral Sclerosis Rating Scale (ALS) - Revised</a></li>
+        <li><a href="#AIMS" style="display:none" class="testLink Neuro Pædiatri Rehab" id = "linkTilAIMS">Alberta Infant Motor Scale (AIMS)</a></li>
+        <li><a href="#y" style="display:none" class="testLink Funktion Neuro Rehab">Action Research Arm Test (ARAT)</a></li>
 
         <li><a href="#" style="display:none" class="testLink Balance Geronto Musku Neuro Rehab">Balance Evaluation System Test (BESTest)</a></li>
         <li><a href="#" style="display:none" class="testLink Mobilitet Funktion Geronto HLI-fys Neuro Rehab">Barthel Indeks</a></li>
@@ -149,6 +148,8 @@
         <li><a href="#" style="display:none" class="testLink Kondition HLI-fys Idræt Musku Pædiatri Rehab">Et-punktstest</a></li>
         <li><a href="#" style="display:none" class="testLink Livskvalitet Geronto HLI-fys Musku PsPs Rehab Sundhed">European Quality of Life - 5 Dimensions</a></li>
         <li><a href="#" style="display:none" class="testLink Skulder Livskvalitet Musku">Et livskvalitet spørgeskema til patienter med scapula alate (SA-Q)</a></li>
+        <!-- skal fjernes fra denne liste -->
+        <li><a href="#email" style="display:none" class="testLink ">Email</a></li>
 
         <li><a href="#" style="display:none" class="testLink Geronto Neuro Rehab Sundhed Geronto Neuro Rehab Sundhed">Falls Efficacy Scale-International (FES-I)</a></li>
         <li><a href="#" style="display:none" class="testLink HLI-fys Neuro Rehab">Fatigue Severity Scale (FSS)</a></li>
@@ -248,109 +249,7 @@
         <li><a href="#" style="display:none" class="testLink Nakke/ryg Smerte Musku PsPs">Örebro Muculoskeletal Pain Questionnaire</a></li>
         </ul>        
    
-    <p id="debug_info" style="color:red; text-align:center">Debug mode: </p>
+        <p id="debug_info" style="color:red; text-align:center; display:none">Debug mode: </p>
    
     </div>
-
 </div>
-
-   
-
-
-
-
-<script>
-    function selectionHandler(selector){
-
-        let selection1 = document.getElementById("select1").value;
-
-        let alleTestLink = document.getElementsByClassName("testLink");
-
-        switch(selection1){
-            case "Krop&funktion":   
-                
-                document.getElementById('Krop&funktion').style.display="block";
-                document.getElementById('Specialer').style.display = "none";
-                //document.getElementById('searchInput').style.display = "none";
-
-                let selection2a = document.getElementById("select2a").value;
-
-                for (let i=0; i < alleTestLink.length; i++){
-                    if(!alleTestLink[i].classList.contains(selection2a)){
-                    alleTestLink[i].style["display"] = "none";                           
-                    }
-                    else{
-                        alleTestLink[i].style["display"]="block";
-                    }
-                }
-                "Måleredskaber i den valgte kategori"
-            break;
-    
-            case "Specialer":  
-                document.getElementById('Krop&funktion').style.display= "none";
-                document.getElementById('Specialer').style.display = "block";
-                //document.getElementById('searchInput').style.display = "none";
-
-                let selection2b = document.getElementById("select2b").value;
-
-                for (let i=0; i < alleTestLink.length; i++){
-                    if(!alleTestLink[i].classList.contains(selection2b)){
-                    alleTestLink[i].style["display"] = "none";                           
-                    }
-                    else{
-                    alleTestLink[i].style["display"]="block";
-                    }
-                }
-            break;
-            
-            case "Vis alle":    
-                document.getElementById('Krop&funktion').style.display="none";
-                document.getElementById('Specialer').style.display = "none";
-                //document.getElementById('searchInput').style.display = "block";
-
-                for (let i=0; i < alleTestLink.length; i++){
-                    alleTestLink[i].style["display"]="block";
-                }
-            break;
-        }
-    }
-    selectionHandler("overkategori");
-</script>
-     
-
-<script>
-    function searchInputHandler(){
-
-        document.getElementById("select1").value = "Vis alle";
-        document.getElementById("select1").dispatchEvent(new Event('change'));
-
-        document.getElementById('Krop&funktion').style.display="none";
-        document.getElementById('Specialer').style.display = "none";
-        //document.getElementById('Vis alle').style.display = "block";                        
-
-        let searchInput = document.getElementById("searchInput").value.toLowerCase();
-
-        let alleTestLink = document.getElementsByClassName("testLink");
-
-        for (let i=0; i < alleTestLink.length; i++){
-            if(
-                alleTestLink[i].innerHTML.toLowerCase().startsWith(searchInput)
-                ||  // lige nu kan første kriterie slettes, da includes inkluderer dette...
-                alleTestLink[i].innerHTML.toLowerCase().includes(searchInput)
-            )
-            {
-                alleTestLink[i].style.display = "block";
-            }
-            else{
-                alleTestLink[i].style.display = "none";
-            }
-        }
-    }
-    
-    document.getElementById("searchInput").addEventListener('input', event => {
-        searchInputHandler()
-    })
-    document.getElementById("searchInput").addEventListener('click', event => {
-        searchInputHandler()
-    })
-</script>

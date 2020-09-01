@@ -1,14 +1,16 @@
-import {tiMeterGangTest_testSuite} from '../pages/redskaber/tiMeterGangTest_testsuite.js';
-import {seksMinGangTest_testSuite} from '../pages/redskaber/seksMinGangTest_testsuite.js';
+import {tiMeterGang_testSuite} from '../pages/redskaber/tiMeterGang_testsuite.js';
+import {seksMinGang_testSuite} from '../pages/redskaber/seksMinGang_testsuite.js';
+import {DOM_testSuite} from './testSuites/DOM_testsuite.js';
 
-document.getElementById("debug_info").style.display = "block";
 
 let all_suites = [
-    tiMeterGangTest_testSuite, 
-    seksMinGangTest_testSuite
+    tiMeterGang_testSuite, 
+    seksMinGang_testSuite,
+    DOM_testSuite,
 ]
 
 function run_test_suite(suiteName){
+    document.getElementById("debug_info").style.display = "block";
     let report = suiteName();
     let expected, actual
     let all_passed = true;
@@ -56,7 +58,8 @@ export function run_all_suites(){
         document.getElementById('debug_info').innerHTML += `<br />Ran ${num_suites} testsuites with a total of ${total_test_num} tests. All passed :=)`;
     }
     else{
+        console.log(`Ran ${num_suites} testsuites with a total of ${total_test_num} tests`);
         document.getElementById('debug_info').innerHTML += " There were errors. Check console";
     }
 }
-
+console.log("try this service! https://validator.w3.org/")

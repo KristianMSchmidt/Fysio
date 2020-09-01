@@ -1,4 +1,4 @@
-<div data-role="page" id="tiMeterGangTestAbout">
+<div data-role="page" id="tiMeterGangAbout">
 
     <!-- header -->
     <?php include "commons/header_with_back_button.php" ?>

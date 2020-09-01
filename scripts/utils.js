@@ -23,8 +23,8 @@ function roundToTwo(num) {
 
 function prepareEmail(testId){
     const testNames = {
-        "tiMeterGangTest": "10-meter gangtest",
-        "seksMinGangTest": "6-minuttersgangtest"
+        "tiMeterGang": "10-meter gangtest",
+        "seksMinGang": "6-minuttersgangtest"
     }
     let urlWithParams = generate_url(testId);
     document.getElementById('emailSubject').value = testNames[testId]; 
