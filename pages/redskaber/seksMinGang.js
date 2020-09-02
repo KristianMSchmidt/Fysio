@@ -21,9 +21,14 @@ function seksMinGang_beregner(){
 
     if (!isNumeric(age)){
         document.getElementById("seksMinGang_error").innerHTML ="Indtast patientens alder i hele år";
-        //document.getElementById("seksMinGang_alder").value="";
-        //document.getElementById("seksMinGang_alder").style.backgroundColor="rgba(255,145,173,0.3)";
-        //document.getElementById("seksMinGang_alder").focus();
+        document.getElementById("seksMinGang_alder_error").innerHTML="Indtast patientens alder i hele år";
+        document.getElementById("seksMinGang_alder_error").style.display = "block";
+        document.getElementById("seksMinGang_alder_error").focus();
+        $(function(){     
+            $('html, body').animate({
+              scrollTop: $('#seksMinGang_alder').offset().top
+            });
+          });
         return;
     }
     else {
@@ -57,7 +62,7 @@ function seksMinGang_beregner(){
         document.getElementById("seksMinGang_error").innerHTML = "Indtast patientens vægt i hele kg";
         //document.getElementById("seksMinGang_vægt").value="";
         //document.getElementById("seksMinGang_vægt").style.backgroundColor="rgba(255,145,173,0.3)";
-        document.getElementById("seksMinGang_vægt").focus();
+        //document.getElementById("seksMinGang_vægt").focus();
         return
     }
     else{

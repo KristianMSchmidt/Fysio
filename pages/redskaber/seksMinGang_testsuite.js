@@ -19,6 +19,8 @@ export function seksMinGang_testSuite(){
         document.getElementById("seksMinGang_error").style.display = "block";
         document.getElementById("seksMinGangOutput").style.display = "block";
         document.getElementById("seksMinGang_generate_email_btn").style.display = "none";
+        document.getElementById("seksMinGang_alder_error").style.display ="none";
+
     }
     
     //Test 1
