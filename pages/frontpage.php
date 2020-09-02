@@ -19,18 +19,7 @@
         ui-btn-icon-notext ui-btn-right"> 
     </div>  
     
-    <!-- Menu panel -->
-    <div data-role="panel" data-position = "left" id="mypanel">
-        <p>
-        Dansk Selskab for Fysioterapi er ansvarlig for vurdering af test og måleredskaber. Siden bliver løbende opdateret med nye måleredskaber og opdatering af de eksisterende måleredskaber.
-        </p>
-        <a href="https://kimarokko.000webhostapp.com">Hjemmeside</a>
-        <p>Logo </p>
-        <p>Kontakt</p>
-        <p>Om appen</p>
-    </div><!-- Menu panel -->
-
-
+   
     <!-- page content -->   
     <div role="main" class="ui-content">
         <h3>Måleredskaber og test</h3>     
@@ -252,4 +241,14 @@
         <p id="debug_info" style="color:red; text-align:center; display:none">Debug mode: </p>
    
     </div>
+
+    <!-- Menu panel -->
+    <div data-role="panel" data-position = "left" id="mypanel">
+        <p>Dansk Selskab for Fysioterapi er ansvarlig for vurdering af test og måleredskaber. Siden bliver løbende opdateret med nye måleredskaber og opdatering af de eksisterende måleredskaber.</p>
+        <a href="https://kimarokko.000webhostapp.com">Hjemmeside</a>
+        <p>Logo </p>
+        <p>Kontakt</p>
+        <p>Om appen</p>
+    </div><!-- Menu panel -->
+
 </div>

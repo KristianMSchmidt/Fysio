@@ -28,8 +28,8 @@
         
             <label for="seksMinGang_alder">Alder:</label>
             <input id="seksMinGang_alder" class="seksMinGang input" placeholder = "Angiv alder i hele år" type = "number" name="seksMinGang_alder" value=""/>
-                
-      
+            <p id="seksMinGang_alder_error" style = "display:none; color: red"></p>
+
             <label for="seksMinGang_vægt">Vægt (kg):</label>
             <input id="seksMinGang_vægt" class="seksMinGang input" placeholder = "Angiv vægt i hele kg" type = "number" name="seksMinGang_vægt" value=""/>
         

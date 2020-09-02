@@ -7,31 +7,37 @@
 <body>
     <!-- frontpage -->
     <?php include "pages/frontpage.php" ?>
-
+    <script src="pages/frontpage.js"></script>
+    
+    <!-- 10-meter gangtest -->
     <?php include "pages/redskaber/tiMeterGang.php"?>
     <?php include "pages/redskaber/tiMeterGangAbout.php"?> 
- 
+    <script src="pages/redskaber/tiMeterGang.js"></script>  
+    
+    <!-- 6-minuttersgangtest -->
     <?php include "pages/redskaber/seksMinGang.php"?>
     <?php include "pages/redskaber/seksMinGangAbout.php"?>
- 
+    <script src="pages/redskaber/seksMinGang.js"></script>  
+
+    <!-- 2,45m up-and-go-test -->
     <?php include "pages/redskaber/upAndGo.php"?>
     <?php include "pages/redskaber/upAndGoAbout.php"?> 
-  
+    <script src="pages/redskaber/upAndGo.js"></script>  
 
+    <!-- ALS  -->
+    <?php include "pages/redskaber/ALS.php"?>
+    <?php include "pages/redskaber/ALSAbout.php"?> 
+    <script src="pages/redskaber/ALS.js"></script>  
  
-    <!-- subpages & their scripts  -->
+    <!-- email page & their scripts  -->
     <?php include "pages/email.php"?>
+    <script src= "scripts/email/email.js"></script>
 
 
     <!-- load general scripts -->
     <script src="scripts/utils.js"></script> 
-    <script src= "scripts/email/email.js"></script>
     
-    <script src="pages/frontpage.js"></script>
     <script src="pages/redskaber/ALS.js"></script>  
-    <script src="pages/redskaber/upAndGo.js"></script>  
-    <script src="pages/redskaber/tiMeterGang.js"></script>  
-    <script src="pages/redskaber/seksMinGang.js"></script>  
 
     <!-- start session (incl. tests) -->
     <script src="scripts/session.js" type="module"></script> 

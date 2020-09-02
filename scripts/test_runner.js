@@ -1,6 +1,7 @@
 import {tiMeterGang_testSuite} from '../pages/redskaber/tiMeterGang_testsuite.js';
 import {seksMinGang_testSuite} from '../pages/redskaber/seksMinGang_testsuite.js';
 import {DOM_testSuite} from './testSuites/DOM_testsuite.js';
+//console.log("try this service when app online! https://validator.w3.org/")
 
 
 let all_suites = [
@@ -62,4 +63,3 @@ export function run_all_suites(){
         document.getElementById('debug_info').innerHTML += " There were errors. Check console";
     }
 }
-console.log("try this service! https://validator.w3.org/")

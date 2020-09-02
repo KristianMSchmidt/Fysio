@@ -1,3 +1,22 @@
+const pagesAndNames = {
+  // Alle sider og de rigtige test-navne. 
+  // testId: real_name
+  "tiMeterGang": "10-meter gangtest",
+  "tiMeterGangAbout": "",
+  "seksMinGang": "6-minuttersgangtest",
+  "seksMinGangAbout": "",
+  "upAndGo": "2,45m up-and-go-test",
+  "upAndGoAbout": "",
+  "ALS": "Amyotrophic Lateral Sclerosis Rating Scale (ALS) - Revised",
+  "ALSAbout": "",
+  
+  "email": "",
+  "frontpage": ""
+}
+// list with all pageid's
+pageList = Object.keys(pagesAndNames);
+
+
 function arraysMatch(arr1, arr2) {
 
 	// Check if the arrays are the same length
@@ -20,40 +39,6 @@ function isNumeric(n){
 function roundToTwo(num) {    
   return +(Math.round(num + "e+2")  + "e-2");
 }
-
-function prepareEmail(testId){
-    const testNames = {
-        "tiMeterGang": "10-meter gangtest",
-        "seksMinGang": "6-minuttersgangtest"
-    }
-    let urlWithParams = generate_url(testId);
-    document.getElementById('emailSubject').value = testNames[testId]; 
-    document.getElementById('emailContent').value = "Her kan du genfinde de indtastede data: " + urlWithParams;  
-    document.getElementById("emailStatusText").innerHTML = "";
-    document.getElementById("emailStatusText").style.color="black";
-    document.getElementById("userEmailAddress").style.backgroundColor="transparent";
-    document.getElementById("emailContent").style.backgroundColor="transparent";
-}
-
-
-function generate_url(testId){
-    // Generates url to datalink
-  
-    const targetForm = $('#' + testId + 'Form');
-    const params = targetForm.serialize(); 
-    const url = window.location.href;
-    const after_hash = url.split("#")[1]; 
-  
-    if (url.includes("?")){
-      var first_part = url.split("?")[0];
-    } 
-    else{
-      var first_part = url.split("#")[0]; 
-    }
-    const urlWithParams = first_part + '?' + params + '#' + after_hash;  
-    
-    return(urlWithParams);
-  }
 
   
 

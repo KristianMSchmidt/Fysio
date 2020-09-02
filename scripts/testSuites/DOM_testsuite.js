@@ -1,17 +1,8 @@
 // This test is not really working --> concludes even if there is problem with pages
 // But if i look at the page changes, I can see problems with blank pages
-export function DOM_testSuite(){
-    let all_pages =[
-        "tiMeterGang", 
-        "tiMeterGangAbout", 
-        "seksMinGang", 
-        "seksMinGangAbout", 
-        "upAndGo", 
-        "upAndGoAbout",
-        "email", 
-        "frontpage"];
 
-    
+export function DOM_testSuite(){
+   
     let report = {
         "testName" : "DOM",
         "results" : []
@@ -20,13 +11,15 @@ export function DOM_testSuite(){
     //Test 1    
     function test1(){
         let actual = [];
-        let expected = all_pages;
+        let expected = pageList;
 
-        for(let i=0; i<all_pages.length; i++){ 
+        for(let i=0; i<pageList.length; i++){ 
             try{         
                 actual[i] = document.getElementById(expected[i]).id;
             }
             catch{
+                actual[i] = "non-existing";
+
                 console.log(`Page with id "${expected[i]}" not in DOM`)
             }
         }
@@ -44,15 +37,16 @@ export function DOM_testSuite(){
         let expected = [];
         let actual = [];
 
-        for(let i=0; i<all_pages.length; i++){ 
+        for(let i=0; i<pageList.length; i++){ 
+            expected[i]="ui-content"
             try{        
-                actual[i] = document.querySelectorAll(`#${all_pages[i]} div`)[1].className;  
-                expected[i] = "ui-content";
+                actual[i] = document.querySelectorAll(`#${pageList[i]} div`)[1].className; 
             }
             catch{
                 actual[i] = "non-existent";  
-                expected[i] = "ui-content";
-                console.log(`Page with id "${all_pages[i]}" does not have ui-content as second div`)
+            }
+            if (!actual[i]=="ui-content" ){
+                console.log(`Page with id "${pageList[i]}" does not have ui-content as second div`)
             }
         }
         report["results"].push({
@@ -68,13 +62,13 @@ export function DOM_testSuite(){
         let expected = [];
         let actual = [];
 
-        for(let i=0; i<all_pages.length; i++){ 
+        for(let i=0; i<pageList.length; i++){ 
             try{        
-                actual[i] = document.querySelectorAll(`#${all_pages[i]} div`)[0].getAttribute('data-role');  
+                actual[i] = document.querySelectorAll(`#${pageList[i]} div`)[0].getAttribute('data-role');  
                 expected[i] = "header";
             }
             catch{
-                console.log(`Page with id "${all_pages[i]}" does not have "header" as first div`)
+                console.log(`Page with id "${pageList[i]}" does not have "header" as first div`)
             }
         }
      
