@@ -31,7 +31,7 @@
  
     <!-- email page & their scripts  -->
     <?php include "pages/email.php"?>
-    <script src= "scripts/email/email.js"></script>
+    <script src= "pages/email.js"></script>
 
 
     <!-- load general scripts -->

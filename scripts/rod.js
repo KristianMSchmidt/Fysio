@@ -1,3 +1,7 @@
-a = [1,2,3]
-console.log(a.includes(1,2))
-console.log(a.includes(1,2))
+
+
+
+<label for="tiMeterGang_tid1">Tidsforbrug i 1. forsøg (sek.):</label>
+<input id="tiMeterGang_tid1" class="tiMeterGang input" 
+   placeholder = "Angiv tidsforbrug i sek." type = "number" 
+   name= "tiMeterGang_tid1"/>

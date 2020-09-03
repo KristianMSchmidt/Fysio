@@ -1,17 +1,15 @@
-import {run_all_suites} from "./test_runner.js"
-
-//run all other tests
+import {run_all_suites} from './test_runner.js'
+import {recover_data_from_url} from './recover_data_from_url.js'
+//run all tests suites
 run_all_suites();
 
 // recover data from url
-let url=window.location.href;
-if (url.includes("?")){
-    console.log("recovering data from url...");
-    //recover data from URL
-    (new URL(url)).searchParams.forEach((x, y) => {
-      document.getElementById(y).value = x
-     });
-}
+recover_data_from_url();
+
+
+
+
+
 
 
  /*

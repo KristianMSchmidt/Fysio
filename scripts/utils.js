@@ -16,6 +16,14 @@ const pagesAndNames = {
 // list with all pageid's
 pageList = Object.keys(pagesAndNames);
 
+function showElement(id){
+  $(function(){     
+    $('html, body').animate({
+      scrollTop: $(`#${id}`).offset().top
+    });
+  });
+}
+
 
 function arraysMatch(arr1, arr2) {
 
@@ -40,26 +48,5 @@ function roundToTwo(num) {
   return +(Math.round(num + "e+2")  + "e-2");
 }
 
-  
-
-function showIfFielsAreInvalid(testId){
-    //Denne funktion bruger jeg ikke i øjeblikket
-    console.log("HEj fra showFildsAreInvalid")
-    //  let targetForm = $('#' + testId + 'Form');
-    let inputs = document.getElementsByClassName(testId +' input');
-    for (let i = 0; i < inputs.length; i++ ) {
-     // inputs[i].style.rder = "red";
-     console.log(inputs[i].classList)
-      if(inputs[i].value == ''){
-        //In this case field is empty or not valid number
-        //Last number is transparency. 1=not transparet. Witho some transparency,
-        //I keep tthe styling of jquery mobile (shadow etx) & and black numbers look better. 
-        //document.getElementById(inputs[i].id).style.backgroundColor="rgba(255,145,173,0.3)";
-        inputs[i].style.backgroundColor="rgba(255,145,173,0.3)";
-      } else{
-        inputs[i].style.backgroundColor="transparent";
-      }   
-    }
-  }
   
   

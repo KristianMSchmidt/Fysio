@@ -1,7 +1,26 @@
-<!-- skal der være mulighed for at indtaste antal skridt også?? og hvad emd gangredskab og årsager til færre end 3 forsøg?-->
+<!DOCTYPE html>
+<html>
+<head>
+   
+    <meta charset="utf-8" />
+   
+    <!-- vigtigt -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,
+    width=device-width, height=device-height" />
+  
+   
+    
+    <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+  
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>      
+  
+     
+</head>
+<body>
+<!-- skal der være mulighed for at indtaste antal skridt også??-->
 <!-- detaljer: lige nu fjernes ikke-udfyldte felter ikke når side auto-udfyldes via link -->
-<!-- Skal der være info om, at der er en hurtig version? -->
-<!-- en ide, jeg llige har fået: Er det instruktionen til patienten, som skal stå helt kort på forsiden af testen?" -->
+
 <!-- 10-meter gangtest -->
 <div data-role="page" id="tiMeterGang" data-theme ="a">
     
@@ -40,7 +59,6 @@
                    placeholder = "Angiv tidsforbrug i sek." type = "number" 
                    name= "tiMeterGang_tid1"/>
             </div>
-            <p id="tiMeterGang_tid1_error" class = "errorMgs"></p>
             
             <div id = "tiMeterGang_input2" style="display:block">
                 <label for="tiMeterGang_tid2">Tidsforbrug i 2. forsøg (sek.):</label>
@@ -48,8 +66,6 @@
                 placeholder = "Angiv tidsforbrug i sek." type = "number" 
                 name= "tiMeterGang_tid2" value=""/>
             </div>
-            <p id="tiMeterGang_tid2_error" class = "errorMgs"></p>
-
             
             <div id = "tiMeterGang_input3" style="display:block">
                 <label for="tiMeterGang_tid3">Tidsforbrug i 3. forsøg (sek.):</label>
@@ -57,7 +73,6 @@
                        placeholder = "Angiv tidsforbrug i sek." 
                        type = "number" name= "tiMeterGang_tid3" value=""/>
             </div>
-            <p id="tiMeterGang_tid3_error" class = "errorMgs"></p>
 
             <div style="text-align:center">
                 <button id ="add_button" type = "button" data-inline="true" onclick = "tiMeterGang_add()" 
@@ -71,15 +86,26 @@
 
         </form>
 
+        <!-- dette bruges måske af alle mine test-sider, så kode-stumpen kan evt includes fra common -->
+        <!-- fejlmeddelelse -->
+        <p id="tiMeterGang_error" style="text-align:center; color:red"></p> 
         <!-- Resultat-->
         <p id="tiMeterGangOutput"></p>
 
-        <!-- emailbtn -->
-        <div id = "tiMeterGang_generate_email_btn" style="text-align:center; display: none;">
-            <a href="#email" data-role="button" data-icon="arrow-r" data-iconpos="right">Send data</a>
-        </div>
-
+        <!-- output og email_btn area -->
+        <?php include 'commons/generate_email_btn_div.php' ?>
 
     </div> <!-- end of content -->
 
 </div> <!-- end of page -->
+
+<script>
+function tiMeterGang_beregner(){
+let testId= "tiMeterGang"
+const targetForm = $('#' + testId + 'Form');
+const params = targetForm.serialize(); 
+console.log("params", params)
+}
+ </script>
+</body>
+</html>

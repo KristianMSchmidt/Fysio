@@ -1,4 +1,4 @@
-//Find reference på formlerne - passer de? Herefter skal jeg implementere tests
+//Find reference på formlerne - passer de? Herefter skal jeg implementere tests for resultaterne + undgå meningsløse svar som 0%.
 
 export function seksMinGang_testSuite(){
 
@@ -12,24 +12,33 @@ export function seksMinGang_testSuite(){
         document.getElementById("seksMinGang_vægt").value = ""
         document.getElementById("seksMinGang_højde").value = ""
         document.getElementById("seksMinGang_distance").value = ""
+
         document.getElementById("seksMinGangOutput").innerHTML = "";
-        document.getElementById("seksMinGang_error").innerHTML = "";
         document.getElementById("seksMinGang_forventet").innerHTML = "";
 
-        document.getElementById("seksMinGang_error").style.display = "block";
+        let allErrorMgs = document.getElementById("seksMinGang").getElementsByClassName("errorMgs");
+        for(let i = 0; i<allErrorMgs.length; i++){
+            allErrorMgs[i].innerHTML = "";
+            allErrorMgs[i].style.display = "none";
+        }
         document.getElementById("seksMinGangOutput").style.display = "block";
         document.getElementById("seksMinGang_generate_email_btn").style.display = "none";
-        document.getElementById("seksMinGang_alder_error").style.display ="none";
+        document.seksMinGangForm.seksMinGang_gender[0].checked=true; //mand er default
 
     }
     
-    //Test 1
     function test1(){
         reset();
         document.getElementById("seksMinGang_beregn_knap").click();
 
-        let actual = document.getElementById("seksMinGang_error").innerHTML;
-        let expected = "Indtast patientens alder i hele år";
+        let actual = []
+        let expected = []
+
+        actual[0] = document.getElementById("seksMinGang_alder_error").innerHTML;
+        expected[0] = "Indtast patientens alder i hele år";
+
+        actual[1] = document.getElementById("seksMinGang_alder_error").style.display;
+        expected[1] = "block";
 
         report["results"].push({
             "expected" : expected,
@@ -39,17 +48,14 @@ export function seksMinGang_testSuite(){
     }
     test1();
 
-    //Test 2
     function test2(){
         reset();
-        document.getElementById("seksMinGang_alder").value = "56"
-        document.getElementById("seksMinGang_vægt").value = ""
-        document.getElementById("seksMinGang_højde").value = "45"
-      
+        document.getElementById("seksMinGang_alder").value = "-3";
+
         document.getElementById("seksMinGang_beregn_knap").click();
 
-        let actual = document.getElementById("seksMinGang_error").innerHTML;
-        let expected = "Indtast patientens vægt i hele kg";
+        let actual = document.getElementById("seksMinGang_alder_error").innerHTML;
+        let expected = "Patientens alder kan ikke være negativ"
 
         report["results"].push({
             "expected" : expected,
@@ -59,17 +65,14 @@ export function seksMinGang_testSuite(){
     }
     test2();
 
-    //Test 3
     function test3(){
         reset();
-        document.getElementById("seksMinGang_alder").value = "56"
-        document.getElementById("seksMinGang_vægt").value = "100"
-        document.getElementById("seksMinGang_højde").value = "45"
-      
+        document.getElementById("seksMinGang_alder").value = "1";
+
         document.getElementById("seksMinGang_beregn_knap").click();
 
-        let actual = document.getElementById("seksMinGang_error").innerHTML;
-        let expected = "Er patienten virkelig kun 45 cm høj?";
+        let actual = document.getElementById("seksMinGang_alder_error").innerHTML;
+        let expected = "Er patienten virkelig kun 1 år gammel?"
 
         report["results"].push({
             "expected" : expected,
@@ -79,18 +82,15 @@ export function seksMinGang_testSuite(){
     }
     test3();
 
-
-    //Test 4
+    
     function test4(){
         reset();
-        document.getElementById("seksMinGang_alder").value = "56"
-        document.getElementById("seksMinGang_vægt").value = "100"
-        document.getElementById("seksMinGang_højde").value = "145"
-        
+        document.getElementById("seksMinGang_alder").value = "150";
+
         document.getElementById("seksMinGang_beregn_knap").click();
 
-        let actual = document.getElementById("seksMinGang_error").innerHTML;
-        let expected = "Indtast gangdistance i hele antal meter";
+        let actual = document.getElementById("seksMinGang_alder_error").innerHTML;
+        let expected = "Er patienten virkelig 150 år gammel?"
 
         report["results"].push({
             "expected" : expected,
@@ -99,10 +99,208 @@ export function seksMinGang_testSuite(){
         );
     }
     test4();
- 
-    
-    //Test 5
+
+   
     function test5(){
+        reset();
+        document.getElementById("seksMinGang_alder").value = "56"
+        document.getElementById("seksMinGang_vægt").value = ""
+        document.getElementById("seksMinGang_højde").value = "45"
+      
+        document.getElementById("seksMinGang_beregn_knap").click();
+        let actual=[]
+        let expected =[]
+
+        actual[0] = document.getElementById("seksMinGang_vægt_error").innerHTML;
+        expected[0] = "Indtast patientens vægt i hele kg";
+
+        actual[1] = document.getElementById("seksMinGang_vægt_error").style.display;
+        expected[1] = "block";
+
+        actual[2] = document.getElementById("seksMinGang_alder_error").style.display;
+        expected[2] = "none";
+
+        actual[3] = document.getElementById("seksMinGang_højde_error").style.display;
+        expected[3] = "none";
+
+        actual[4] = document.getElementById("seksMinGang_distance_error").style.display;
+        expected[4] = "none";
+
+        actual[4] = document.getElementById("seksMinGang_generate_email_btn").style.display;
+        expected[4] = "none";
+        
+        report["results"].push({
+            "expected" : expected,
+            "actual" : actual
+            }
+        );
+    }
+    test5();
+
+  
+    function test6(){
+        reset();
+        document.getElementById("seksMinGang_alder").value = "56"
+        document.getElementById("seksMinGang_vægt").value = "-3"
+        document.getElementById("seksMinGang_højde").value = "45"
+        
+        document.getElementById("seksMinGang_beregn_knap").click();
+
+        let actual=[]
+        let expected =[]
+
+        actual[0] = document.getElementById("seksMinGang_vægt_error").innerHTML;
+        expected[0] = "Patientens vægt kan ikke være negativ";
+
+        document.getElementById("seksMinGang_vægt").value = "19"
+        document.getElementById("seksMinGang_beregn_knap").click();
+
+        actual[1] = document.getElementById("seksMinGang_vægt_error").innerHTML; 
+        expected[1] = "Vejer patienten virkelig kun 19 kg?";
+
+        document.getElementById("seksMinGang_vægt").value = "400"
+        document.getElementById("seksMinGang_beregn_knap").click();
+
+        actual[2] = document.getElementById("seksMinGang_vægt_error").innerHTML;
+        expected[2] = "Vejer patienten virkelig 400 kg?";
+
+        actual[3] = document.getElementById("seksMinGang_vægt_error").style.display;
+        expected[3] = "block";
+        
+        document.getElementById("seksMinGang_vægt").value = "67";
+        document.getElementById("seksMinGang_beregn_knap").click();
+
+        actual[4] = document.getElementById("seksMinGang_vægt_error").innerHTML = "";
+        expected[4] = "";
+
+        actual[5] = document.getElementById("seksMinGang_vægt_error").style.display;
+        expected[5] = "none";
+
+        report["results"].push({
+            "expected" : expected,
+            "actual" : actual
+            }
+        );
+    }
+    test6();
+
+    function test7(){
+        reset();
+        document.getElementById("seksMinGang_alder").value = "56"
+        document.getElementById("seksMinGang_vægt").value = "100"
+        document.getElementById("seksMinGang_højde").value = "30"
+
+        document.getElementById("seksMinGang_beregn_knap").click();
+
+        let expected = "Er patienten virkelig kun 30 cm høj?";
+        let actual = document.getElementById("seksMinGang_højde_error").innerHTML;
+
+        report["results"].push({
+            "expected" : expected,
+            "actual" : actual
+            }
+        );
+    }
+    test7();
+
+    function test8(){
+        reset();
+        document.getElementById("seksMinGang_alder").value = "56"
+        document.getElementById("seksMinGang_vægt").value = "100"
+        document.getElementById("seksMinGang_højde").value = "445"
+      
+        document.getElementById("seksMinGang_beregn_knap").click();
+
+        let expected = "Er patienten virkelig 445 cm høj?";
+        let actual = document.getElementById("seksMinGang_højde_error").innerHTML;
+
+
+        report["results"].push({
+            "expected" : expected,
+            "actual" : actual
+            }
+        );
+    }
+    test8();
+
+    function test9(){
+        reset();
+        document.getElementById("seksMinGang_alder").value = "56"
+        document.getElementById("seksMinGang_vægt").value = "100"
+      
+        document.getElementById("seksMinGang_beregn_knap").click();
+
+        let expected = "Indtast patientens højde i hele cm";
+        let actual = document.getElementById("seksMinGang_højde_error").innerHTML;
+
+        report["results"].push({
+            "expected" : expected,
+            "actual" : actual
+            }
+        );
+    }
+    test9();
+
+
+    function test10(){
+        reset();
+        document.getElementById("seksMinGang_alder").value = "56"
+        document.getElementById("seksMinGang_vægt").value = "100"
+        document.getElementById("seksMinGang_højde").value = "145"
+        
+        document.getElementById("seksMinGang_beregn_knap").click();
+
+        let actual = document.getElementById("seksMinGang_distance_error").innerHTML;
+        let expected = "Indtast gangdistance i hele antal meter";
+
+        report["results"].push({
+            "expected" : expected,
+            "actual" : actual
+            }
+        );
+    }
+    test10();
+ 
+    function test11(){
+    reset();
+    document.getElementById("seksMinGang_alder").value = "56"
+    document.getElementById("seksMinGang_vægt").value = "100"
+    document.getElementById("seksMinGang_højde").value = "145"
+    document.getElementById("seksMinGang_distance").value = ""
+
+    document.getElementById("seksMinGang_beregn_knap").click();
+
+    let actual = document.getElementById("seksMinGang_distance_error").innerHTML;
+    let expected = "Indtast gangdistance i hele antal meter";
+
+    report["results"].push({
+        "expected" : expected,
+        "actual" : actual
+        });
+    }
+    test11();
+
+    function test12(){
+        reset();
+        document.getElementById("seksMinGang_alder").value = "56"
+        document.getElementById("seksMinGang_vægt").value = "100"
+        document.getElementById("seksMinGang_højde").value = "145"
+        document.getElementById("seksMinGang_distance").value = "-4"
+    
+        document.getElementById("seksMinGang_beregn_knap").click();
+    
+        let actual = document.getElementById("seksMinGang_distance_error").innerHTML;
+        let expected = "Gangdistancen kan ikke være negativ";
+    
+        report["results"].push({
+            "expected" : expected,
+            "actual" : actual
+            });
+    }
+    test12();
+    
+
+    function test13(){
         //test if email button gets shown when result i shown and hidden again, when new input 
         reset();
         document.getElementById("seksMinGang_alder").value = "56"
@@ -144,9 +342,9 @@ export function seksMinGang_testSuite(){
             }
         );
     }
-    test5();
+    test13();
 
-    function test6(){
+    function test14(){
         
         //test if email button gets shown when result i shown and hidden again, when new input 
         reset();
@@ -165,22 +363,21 @@ export function seksMinGang_testSuite(){
             }
         ); 
     }
-    test6();
+    test14();
  
-    function test7(){        
+    function test15(){        
         reset();
         window.location.href = 'http://localhost/source/Fysio/#seksMinGang';  
 
-        document.getElementById("seksMinGang_alder").value = "56"
+        document.getElementById("seksMinGang_alder").value = "57"
         document.getElementById("seksMinGang_vægt").value = "100"
         document.getElementById("seksMinGang_højde").value = "145"
         document.getElementById("seksMinGang_distance").value = "300"
 
         document.getElementById("seksMinGang_beregn_knap").click();
 
-        let actual = document.getElementById('emailContent').value.split("?")[1];
-       
-        let expected = "seksMinGang_gender=mand&seksMinGang_alder=56&seksMinGang_v%C3%A6gt=100&seksMinGang_h%C3%B8jde=145&seksMinGang_distance=300#seksMinGang"
+        let actual = document.getElementById('emailContent').value.split("?")[1];      
+        let expected = "seksMinGang_gender=mand&seksMinGang_alder=57&seksMinGang_v%C3%A6gt=100&seksMinGang_h%C3%B8jde=145&seksMinGang_distance=300#seksMinGang"
         
         report["results"].push({
             "expected" : expected,
@@ -188,10 +385,32 @@ export function seksMinGang_testSuite(){
             }
         ); 
 
-        window.location.href = 'http://localhost/source/Fysio';  
+    }
+    test15();
+
+    function test16(){        
+        reset();
+        window.location.href = 'http://localhost/source/Fysio/#seksMinGang';  
+
+        document.seksMinGangForm.seksMinGang_gender[1].checked=true; //kvinde
+        document.getElementById("seksMinGang_alder").value = "56"
+        document.getElementById("seksMinGang_vægt").value = "100"
+        document.getElementById("seksMinGang_højde").value = "145"
+        document.getElementById("seksMinGang_distance").value = "300"
+
+        document.getElementById("seksMinGang_beregn_knap").click();
+
+        let actual = document.getElementById('emailContent').value.split("?")[1];      
+        let expected = "seksMinGang_gender=kvinde&seksMinGang_alder=56&seksMinGang_v%C3%A6gt=100&seksMinGang_h%C3%B8jde=145&seksMinGang_distance=300#seksMinGang"
+        
+        report["results"].push({
+            "expected" : expected,
+            "actual" : actual
+            }
+        ); 
 
     }
-    //test7();
+    test16();
 
     // Do this when all tests are run
     reset();
