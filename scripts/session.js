@@ -1,10 +1,17 @@
 import {run_all_suites} from './test_runner.js'
 import {recover_data_from_url} from './recover_data_from_url.js'
-//run all tests suites
-run_all_suites();
 
-// recover data from url
+
+function debug(){
+    let hash = window.location.hash;
+    run_all_suites();
+    window.location.hash = hash;   // I have do to this, as debug tests interferes with hash 
+}
+debug();
+
 recover_data_from_url();
+    
+// jeg kunne selfølgelig også gøre det sådan, at hvis url indeholde ? så debugges der ikke. 
 
 
 

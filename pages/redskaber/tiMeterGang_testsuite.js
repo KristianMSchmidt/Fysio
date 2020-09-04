@@ -399,8 +399,7 @@ export function tiMeterGang_testSuite(){
 
     function test17(){        
         reset();
-        window.location.href = 'http://localhost/source/Fysio/#seksMinGang';  
-
+    
         document.seksMinGangForm.seksMinGang_gender[1].checked=true; //kvinde
         document.getElementById("seksMinGang_alder").value = "56"
         document.getElementById("seksMinGang_vægt").value = "100"
@@ -417,9 +416,8 @@ export function tiMeterGang_testSuite(){
             "actual" : actual
             }
         ); 
-
     }
-    test17();
+    //test17();
 
  
     // Do this when all tests are run

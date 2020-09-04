@@ -1,7 +1,6 @@
 export function recover_data_from_url(){
     let url=window.location.href;
     if (url.includes("?")){
-      console.log("recovering data from url...");
       //recover data from URL
       (new URL(url)).searchParams.forEach((x, y) => {
           try{
@@ -27,7 +26,7 @@ export function recover_data_from_url(){
           }
       });
     }
-  }
+}
   
   
 

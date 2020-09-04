@@ -62,4 +62,5 @@ export function run_all_suites(){
         console.log(`Ran ${num_suites} testsuites with a total of ${total_test_num} tests`);
         document.getElementById('debug_info').innerHTML += " There were errors. Check console";
     }
+    //document.location.hash = '';
 }
