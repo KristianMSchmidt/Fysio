@@ -39,16 +39,16 @@
                 <input id="tiMeterGang_tid1" class="tiMeterGang input" 
                    placeholder = "Angiv tidsforbrug i sek." type = "number" 
                    name= "tiMeterGang_tid1"/>
+                <p id="tiMeterGang_tid1_error" class = "errorMgs"></p>
             </div>
-            <p id="tiMeterGang_tid1_error" class = "errorMgs"></p>
             
             <div id = "tiMeterGang_input2" style="display:block">
                 <label for="tiMeterGang_tid2">Tidsforbrug i 2. forsøg (sek.):</label>
                 <input id="tiMeterGang_tid2" class="tiMeterGang input" 
                 placeholder = "Angiv tidsforbrug i sek." type = "number" 
                 name= "tiMeterGang_tid2" value=""/>
+                <p id="tiMeterGang_tid2_error" class = "errorMgs"></p>
             </div>
-            <p id="tiMeterGang_tid2_error" class = "errorMgs"></p>
 
             
             <div id = "tiMeterGang_input3" style="display:block">
@@ -56,8 +56,8 @@
                 <input id="tiMeterGang_tid3" class="tiMeterGang input" 
                        placeholder = "Angiv tidsforbrug i sek." 
                        type = "number" name= "tiMeterGang_tid3" value=""/>
+               <p id="tiMeterGang_tid3_error" class = "errorMgs"></p>
             </div>
-            <p id="tiMeterGang_tid3_error" class = "errorMgs"></p>
 
             <div style="text-align:center">
                 <button id ="add_button" type = "button" data-inline="true" onclick = "tiMeterGang_add()" 
