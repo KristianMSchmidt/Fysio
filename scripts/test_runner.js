@@ -40,6 +40,7 @@ function run_test_suite(suiteName){
 }
 
 export function run_all_suites(){
+    let hash = window.location.hash;  //lørdag
     let num_suites = 0
     let total_test_num = 0;
     let all_suites_passed = true;
@@ -62,5 +63,6 @@ export function run_all_suites(){
         console.log(`Ran ${num_suites} testsuites with a total of ${total_test_num} tests`);
         document.getElementById('debug_info').innerHTML += " There were errors. Check console";
     }
+    window.location.hash = hash;  //lørdag
     //document.location.hash = '';
 }

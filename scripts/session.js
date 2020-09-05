@@ -1,3 +1,26 @@
+import {recover_data_from_url} from './recover_data_from_url.js';
+import {run_all_suites} from './test_runner.js';
+
+let DEBUG = true;
+
+if (DEBUG){
+    console.log("Debug mode");
+    run_all_suites();
+}
+
+else{
+    console.log("No debugging")
+}
+
+if (window.location.href.includes('?')){
+    recover_data_from_url();
+}
+
+
+
+
+
+/*
 import {run_all_suites} from './test_runner.js'
 import {recover_data_from_url} from './recover_data_from_url.js'
 
@@ -10,7 +33,7 @@ function debug(){
 debug();
 
 recover_data_from_url();
-    
+  */  
 // jeg kunne selfølgelig også gøre det sådan, at hvis url indeholde ? så debugges der ikke. 
 
 
