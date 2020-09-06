@@ -24,12 +24,12 @@ function prepareEmail(testId){
 }
   
 function generate_url(testId){
-    // Generates url to datalink
+    // Generates url for user to retreive data 
 
     const targetForm = $('#' + testId + 'Form');
     const params = targetForm.serialize(); 
+
     const url = window.location.href;
-    const after_hash = url.split("#")[1]; 
 
     if (url.includes("?")){
     var first_part = url.split("?")[0];
@@ -37,7 +37,7 @@ function generate_url(testId){
     else{
     var first_part = url.split("#")[0]; 
     }
-    const urlWithParams = first_part + '?' + params + '#' + after_hash;  
+    const urlWithParams = first_part + '?' + params + window.location.hash;     
     
     return(urlWithParams);
 }

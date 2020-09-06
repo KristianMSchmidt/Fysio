@@ -1,15 +1,12 @@
 function selectionHandler(){
-
     let selection1 = document.getElementById("select1").value;
-
     let alleTestLink = document.getElementsByClassName("testLink");
 
     switch(selection1){
-        case "Krop&funktion":   
-            
+        case "Krop&funktion":  
+            document.getElementById("searchInput").value = "";
             document.getElementById('Krop&funktion').style.display="block";
             document.getElementById('Specialer').style.display = "none";
-            //document.getElementById('searchInput').style.display = "none";
 
             let selection2a = document.getElementById("select2a").value;
 
@@ -25,9 +22,9 @@ function selectionHandler(){
         break;
 
         case "Specialer":  
+            document.getElementById("searchInput").value = "";
             document.getElementById('Krop&funktion').style.display= "none";
             document.getElementById('Specialer').style.display = "block";
-            //document.getElementById('searchInput').style.display = "none";
 
             let selection2b = document.getElementById("select2b").value;
 
@@ -44,15 +41,13 @@ function selectionHandler(){
         case "Vis alle":    
             document.getElementById('Krop&funktion').style.display="none";
             document.getElementById('Specialer').style.display = "none";
-            //document.getElementById('searchInput').style.display = "block";
-
+ 
             for (let i=0; i < alleTestLink.length; i++){
                 alleTestLink[i].style["display"]="block";
             }
         break;
     }
 }
-selectionHandler("overkategori");
 
 function searchInputHandler(){
 
@@ -61,7 +56,6 @@ function searchInputHandler(){
 
     document.getElementById('Krop&funktion').style.display="none";
     document.getElementById('Specialer').style.display = "none";
-    //document.getElementById('Vis alle').style.display = "block";                        
 
     let searchInput = document.getElementById("searchInput").value.toLowerCase();
 
@@ -82,9 +76,8 @@ function searchInputHandler(){
     }
 }
 
+selectionHandler("overkategori");
+
 document.getElementById("searchInput").addEventListener('input', event => {
-    searchInputHandler()
-})
-document.getElementById("searchInput").addEventListener('click', event => {
     searchInputHandler()
 })

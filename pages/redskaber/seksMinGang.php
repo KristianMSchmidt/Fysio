@@ -2,7 +2,7 @@
 <div data-role="page" id="seksMinGang">
 
     <!-- header -->
-    <?php include "commons/header_with_back_button.php" ?>
+    <?php include "commons/header_w_back_to_frontpage.php" ?>
     
     <!-- content -->
     <div role="main" class="ui-content">

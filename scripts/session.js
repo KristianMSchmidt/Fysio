@@ -4,12 +4,12 @@ import {run_all_suites} from './test_runner.js';
 let DEBUG = true;
 
 if (DEBUG){
-    console.log("Debug mode");
+    //console.log("Debug Mode");
     run_all_suites();
 }
 
 else{
-    console.log("No debugging")
+    console.log("No Debugging")
 }
 
 if (window.location.href.includes('?')){

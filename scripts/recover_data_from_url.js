@@ -1,5 +1,5 @@
-export function recover_data_from_url(){
-    let url=window.location.href;
+export function recover_data_from_url(url=window.location.href){
+   
     (new URL(url)).searchParams.forEach((value, name) => {
         try{
         document.getElementById(name).value = value;
@@ -23,8 +23,9 @@ export function recover_data_from_url(){
             }
         }
     });
+
     // Press 'beregn button' after recovering data, such that result gets shown
-    let fn_name = window.location.hash.split('#')[1] + "_beregner";
+    let fn_name = url.split('#')[1] + "_beregner";
     eval(fn_name)();
 }
 

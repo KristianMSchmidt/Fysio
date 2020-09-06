@@ -7,8 +7,9 @@
 <body>
     <!-- frontpage -->
     <?php include "pages/frontpage.php" ?>
-    <script src="pages/frontpage.js"></script>
     
+    <script src="pages/frontpage.js"></script>
+
     <!-- 10-meter gangtest -->
     <?php include "pages/redskaber/tiMeterGang.php"?>
     <?php include "pages/redskaber/tiMeterGangAbout.php"?> 

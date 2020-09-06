@@ -1,3 +1,5 @@
+import {recover_data_from_url} from '../../scripts/recover_data_from_url.js';
+
 export function tiMeterGang_testSuite(){
 
     function reset(){
@@ -398,26 +400,76 @@ export function tiMeterGang_testSuite(){
     test16();
 
     function test17(){        
+        //Her testes generate url
         reset();
-    
-        document.seksMinGangForm.seksMinGang_gender[1].checked=true; //kvinde
-        document.getElementById("seksMinGang_alder").value = "56"
-        document.getElementById("seksMinGang_vægt").value = "100"
-        document.getElementById("seksMinGang_højde").value = "145"
-        document.getElementById("seksMinGang_distance").value = "300"
 
-        document.getElementById("seksMinGang_beregn_knap").click();
+        document.getElementById("tiMeterGang_tid1").value = 33;
+        document.getElementById("tiMeterGang_tid2").value = 445;
+        document.getElementById("tiMeterGang_tid3").value = 55;
 
-        let actual = document.getElementById('emailContent').value.split("?")[1];      
-        let expected = "seksMinGang_gender=kvinde&seksMinGang_alder=56&seksMinGang_v%C3%A6gt=100&seksMinGang_h%C3%B8jde=145&seksMinGang_distance=300#seksMinGang"
-        
+        document.getElementById("tiMeterGang_beregn_knap").click();
+        window.location.hash = "tiMeterGang";
+        let actual = generate_url("tiMeterGang").split('fysio/?')[1];     
+        let expected = "tiMeterGang_tid1=33&tiMeterGang_tid2=445&tiMeterGang_tid3=55#tiMeterGang";
+
         report["results"].push({
             "expected" : expected,
             "actual" : actual
             }
         ); 
     }
-    //test17();
+    test17();
+
+    function test18(){       
+        //Her testes generate_url og at mail-adressen indsættes i mailen 
+        reset();
+
+        document.getElementById("tiMeterGang_tid1").value = 2;
+        document.getElementById("tiMeterGang_tid2").value = 445;
+        document.getElementById("tiMeterGang_tid3").value = 55;
+
+        document.getElementById("tiMeterGang_beregn_knap").click();
+
+        window.location.hash = "tiMeterGang";
+        let actual = document.getElementById('emailContent').value.split("?")[1]; 
+        let expected = "tiMeterGang_tid1=2&tiMeterGang_tid2=445&tiMeterGang_tid3=55#tiMeterGang"
+
+        report["results"].push({
+            "expected" : expected,
+            "actual" : actual
+            }
+        ); 
+    }
+    test18();
+
+    function test19(){        
+        //Her forsøger jeg at teste funktionen recover_data_from_url 
+        reset();      
+        let url = window.location.href.split("fysio/")[0] + "fysio/?tiMeterGang_tid1=2&tiMeterGang_tid2=445&tiMeterGang_tid3=55#tiMeterGang";
+
+        recover_data_from_url(url);
+
+        let actual = [];
+        let expected = [];
+
+        actual[0] = document.getElementById("tiMeterGang_tid1").value;
+        expected[0] = "2";
+
+        actual[1] = document.getElementById("tiMeterGang_tid2").value;
+        expected[1] = "445"
+ 
+        actual[2] = document.getElementById("tiMeterGang_tid3").value;
+        expected[2] = "55";
+
+        report["results"].push({
+            "expected" : expected,
+            "actual" : actual
+            }
+        ); 
+    }
+    test19();
+
+
 
  
     // Do this when all tests are run

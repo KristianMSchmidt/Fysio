@@ -1,4 +1,5 @@
 //Find reference på formlerne - passer de? Herefter skal jeg implementere tests for resultaterne + undgå meningsløse svar som 0%.
+import {recover_data_from_url} from '../../scripts/recover_data_from_url.js';
 
 export function seksMinGang_testSuite(){
 
@@ -24,7 +25,6 @@ export function seksMinGang_testSuite(){
         document.getElementById("seksMinGangOutput").style.display = "block";
         document.getElementById("seksMinGang_generate_email_btn").style.display = "none";
         document.seksMinGangForm.seksMinGang_gender[0].checked=true; //mand
-        document.location.hash = "";
     }
     
     function test1(){
@@ -365,16 +365,18 @@ export function seksMinGang_testSuite(){
     }
     test14();
  
-    function test15(){        
+    function test15(){       
+         // her tester jeg generate url (gender=mand) og at adressen indsættes i emailen        
+ 
         reset();
-        document.location.hash = 'seksMinGang';
         document.getElementById("seksMinGang_alder").value = "57"
         document.getElementById("seksMinGang_vægt").value = "100"
         document.getElementById("seksMinGang_højde").value = "145"
         document.getElementById("seksMinGang_distance").value = "300"
+    
+        document.location.hash = 'seksMinGang';
 
         document.getElementById("seksMinGang_beregn_knap").click();
-
         let actual = document.getElementById('emailContent').value.split("?")[1];      
         let expected = "seksMinGang_gender=mand&seksMinGang_alder=57&seksMinGang_v%C3%A6gt=100&seksMinGang_h%C3%B8jde=145&seksMinGang_distance=300#seksMinGang"
         
@@ -387,10 +389,9 @@ export function seksMinGang_testSuite(){
     }
     test15();
 
-    function test16(){        
+    function test16(){
+        // her tester jeg generate url (gender=kvinde) og at adressen indsættes i emailen        
         reset();
-        //window.location.href = window.location.href.split("#")[0] + "#seksMinGang";  
-        document.location.hash = 'seksMinGang';
 
         document.seksMinGangForm.seksMinGang_gender[1].checked=true; //kvinde
         document.getElementById("seksMinGang_alder").value = "56"
@@ -398,9 +399,10 @@ export function seksMinGang_testSuite(){
         document.getElementById("seksMinGang_højde").value = "145"
         document.getElementById("seksMinGang_distance").value = "300"
 
+        document.location.hash = 'seksMinGang';
         document.getElementById("seksMinGang_beregn_knap").click();
 
-        let actual = document.getElementById('emailContent').value.split("?")[1];      
+        let actual = document.getElementById('emailContent').value.split("fysio/?")[1];      
         let expected = "seksMinGang_gender=kvinde&seksMinGang_alder=56&seksMinGang_v%C3%A6gt=100&seksMinGang_h%C3%B8jde=145&seksMinGang_distance=300#seksMinGang"
         
         report["results"].push({
@@ -414,22 +416,11 @@ export function seksMinGang_testSuite(){
 
 
     function test17(){        
-        reset();
-        
-        //window.location.href = window.location.href.split("#")[0] + "#seksMinGang";  
-        document.location.hash = 'seksMinGang';
+        //Her forsøger jeg at teste funktionen recover_data_from_url 
+        reset();      
+        let url = window.location.href.split("fysio/")[0] + "fysio/?seksMinGang_gender=kvinde&seksMinGang_alder=56&seksMinGang_v%C3%A6gt=100&seksMinGang_h%C3%B8jde=145&seksMinGang_distance=300#seksMinGang";
+        recover_data_from_url(url);
 
-        document.seksMinGangForm.seksMinGang_gender[1].checked=true; //kvinde
-        document.getElementById("seksMinGang_alder").value = "59"
-        document.getElementById("seksMinGang_vægt").value = "74"
-        document.getElementById("seksMinGang_højde").value = "157"
-        document.getElementById("seksMinGang_distance").value = "77"
-
-        document.getElementById("seksMinGang_beregn_knap").click();
-
-        let data_url = generate_url("seksMinGang")
-        window.location.hast = data_url;
-        
         let actual = [];
         let expected = [];
 
@@ -437,16 +428,16 @@ export function seksMinGang_testSuite(){
         expected[0] = "kvinde";
 
         actual[1] = document.getElementById("seksMinGang_alder").value;
-        expected[1] = "59"; 
+        expected[1] = "56"; 
  
         actual[2] = document.getElementById("seksMinGang_vægt").value;
-        expected[2] = "74";
+        expected[2] = "100";
 
         actual[1] = document.getElementById("seksMinGang_højde").value;
-        expected[1] = "157";
+        expected[1] = "145";
 
         actual[1] = document.getElementById("seksMinGang_distance").value;
-        expected[1] = "77"; 
+        expected[1] = "300"; 
 
         report["results"].push({
             "expected" : expected,
@@ -457,48 +448,8 @@ export function seksMinGang_testSuite(){
     }
     test17();
 
-    function test18(){        
-        reset();
-        
-        //gender default er mand
-        document.getElementById("seksMinGang_alder").value = "59"
-        document.getElementById("seksMinGang_vægt").value = "74"
-        document.getElementById("seksMinGang_højde").value = "157"
-        document.getElementById("seksMinGang_distance").value = "77"
-
-        document.getElementById("seksMinGang_beregn_knap").click();
-
-        let data_url = generate_url("seksMinGang")
-        document.location.hash = data_url;
-              
-        let actual = [];
-        let expected = [];
-
-        actual[0] = document.querySelector('input[name="seksMinGang_gender"]:checked').value;
-        expected[0] = "mand";
-
-        actual[1] = document.getElementById("seksMinGang_alder").value;
-        expected[1] = "59"; 
- 
-        actual[2] = document.getElementById("seksMinGang_vægt").value;
-        expected[2] = "74";
-
-        actual[1] = document.getElementById("seksMinGang_højde").value;
-        expected[1] = "157";
-
-        actual[1] = document.getElementById("seksMinGang_distance").value;
-        expected[1] = "77"; 
-
-        report["results"].push({
-            "expected" : expected,
-            "actual" : actual
-            }
-        ); 
-
-    }
-    test18();
-
     // Do this when all tests are run
     reset();
     return report;
 }
+

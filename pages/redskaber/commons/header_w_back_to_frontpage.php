@@ -1,9 +1,9 @@
-<div  data-role="header" 
+ <div  data-role="header" 
         data-postition="fixed"
         data-tap-toggle="false">
         
-        <a data-direction = "reverse" id="pageHeaderBackLink"
-        class="ui-btn ui-corner-all ui-btn-icon-notext ui-icon-back" data-rel="back"></a>   
+        <a href = "#frontpage" data-direction = "reverse" id="pageHeaderBackLink"
+        class="ui-btn ui-corner-all ui-btn-icon-notext ui-icon-back"></a>   
         
         <h1 id="headerTitle"></h1>
         
