@@ -1,8 +1,7 @@
-/*
-.red {
-	color: #cc0033;
-}*/
-
+.errorMgs {
+    color: red;
+    display: none;
+}
 .text-center{
     text-align:center
 }

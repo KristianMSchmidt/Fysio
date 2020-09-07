@@ -1,17 +1,45 @@
-import {run_all_suites} from "./test_runner.js"
+import {recover_data_from_url} from './recover_data_from_url.js';
+import {run_all_suites} from './test_runner.js';
 
-//run all other tests
-run_all_suites();
+let DEBUG = true;
 
-// recover data from url
-let url=window.location.href;
-if (url.includes("?")){
-    console.log("recovering data from url...");
-    //recover data from URL
-    (new URL(url)).searchParams.forEach((x, y) => {
-      document.getElementById(y).value = x
-     });
+if (DEBUG){
+    //console.log("Debug Mode");
+    run_all_suites();
 }
+
+else{
+    console.log("No Debugging")
+}
+
+if (window.location.href.includes('?')){
+    recover_data_from_url();
+}
+
+
+
+
+
+/*
+import {run_all_suites} from './test_runner.js'
+import {recover_data_from_url} from './recover_data_from_url.js'
+
+
+function debug(){
+    let hash = window.location.hash;
+    run_all_suites();
+    window.location.hash = hash;   // I have do to this, as debug tests interferes with hash 
+}
+debug();
+
+recover_data_from_url();
+  */  
+// jeg kunne selfølgelig også gøre det sådan, at hvis url indeholde ? så debugges der ikke. 
+
+
+
+
+
 
 
  /*

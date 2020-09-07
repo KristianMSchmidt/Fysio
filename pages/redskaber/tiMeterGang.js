@@ -1,3 +1,16 @@
+function tiMeterGangclearAllInputError(){
+    let allErrorMgs = document.getElementById("tiMeterGang").getElementsByClassName("errorMgs");
+    for(let i = 0; i<allErrorMgs.length; i++){
+        allErrorMgs[i].innerHTML = "";
+        allErrorMgs[i].style.display = "none";
+    }
+}
+
+function tiMeterGangClearResultAndGenerateEmailBtn(){
+    document.getElementById("tiMeterGangOutput").innerHTML = "";
+    document.getElementById("tiMeterGang_generate_email_btn").style.display="none";
+}
+
 function tiMeterGang_add(){
     let has_added = false;
     let current_element;
@@ -6,8 +19,7 @@ function tiMeterGang_add(){
         if ((current_element.style.display == "none") && (has_added == false)){
             current_element.style.display = "block";
             has_added = true
-            document.getElementById("tiMeterGangOutput").innerHTML = ""; 
-            document.getElementById("generate_email_btn").style.display = "none";
+            tiMeterGangClearResultAndGenerateEmailBtn();
         }
     }
 };
@@ -20,22 +32,15 @@ function tiMeterGang_remove(){
         if ((current_element.style.display == "block") && (has_removed == false)){
             current_element.style.display = "none";
             has_removed = true;
-            document.getElementById("tiMeterGangOutput").innerHTML = "";
-            document.getElementById("generate_email_btn").style.display = "none";
+            tiMeterGangClearResultAndGenerateEmailBtn();
         }
     }
 };
 
-function clearResult_tiMeterGang(){
-    //alternativ clearResult("tiMeterGang())
-    document.getElementById("tiMeterGangOutput").innerHTML = "";
-    document.getElementById("tiMeterGang_error").innerHTML = "";
-}
 
 function tiMeterGang_beregner(){
- 
-    document.getElementById("tiMeterGang_error").style.display = "block";
-    document.getElementById("tiMeterGangOutput").innerHTML = "";
+   tiMeterGangClearResultAndGenerateEmailBtn();
+   tiMeterGangclearAllInputError();
 
     let tider = [];
     let tid
@@ -47,13 +52,21 @@ function tiMeterGang_beregner(){
             break;
         }
         if (!isNumeric(tid)){
-            document.getElementById("tiMeterGang_error").innerHTML="Tidsforbruget i " + (i+1) + ". forsøg skal angives i sekunder";
+            document.getElementById(`tiMeterGang_tid${i+1}_error`).innerHTML="Tidsforbruget skal angives i sekunder";
+            document.getElementById(`tiMeterGang_tid${i+1}_error`).style.display = "block";
             return
             
         }
+        if ( 0 < tid && tid <= 1){
+            document.getElementById(`tiMeterGang_tid${i+1}_error`).innerHTML= `Har patienten virkelig gået 10 meter på ${tid} sek.?` 
+            document.getElementById(`tiMeterGang_tid${i+1}_error`).style.display = "block";
+            return
+
+        }
         if (tid <= 0){
-            document.getElementById("tiMeterGang_error").innerHTML= "Du har angivet et urealistisk tidsforbrug i " + (i+1) + ". forsøg." 
-            break;
+            document.getElementById(`tiMeterGang_tid${i+1}_error`).innerHTML= `Tidsforbruget kan ikke være ${tid} sek.` 
+            document.getElementById(`tiMeterGang_tid${i+1}_error`).style.display = "block";
+            return;
         }
         
         tider.push(tid)
@@ -66,11 +79,9 @@ function tiMeterGang_beregner(){
         
         let result = roundToTwo(10/korteste_tid);
         
-        document.getElementById("tiMeterGangOutput").innerHTML = "Bedste tid er " + korteste_tid + " sek., svarende til en ganghastighed på " +
-        result + " m/s.";
-        document.getElementById("tiMeterGang_error").style.display = "none";
-
-        document.getElementById("generate_email_btn").style.display = "block";
+        document.getElementById("tiMeterGangOutput").innerHTML = `Bedste tid er ${roundToTwo(korteste_tid)} sek., svarende til en ganghastighed på ${result} m/s.`;
+        showElement('tiMeterGangOutput');
+        document.getElementById("tiMeterGang_generate_email_btn").style.display = "block";
         prepareEmail("tiMeterGang");
         
         //Return for testing purposes
@@ -78,16 +89,12 @@ function tiMeterGang_beregner(){
     }
 }
 
-
-//Make sure that result gets deleted when input value is changed. 
-// Bruges nok af alle mine tests, så den kan evt hentes ind fra utils og så kaldes med testId som argument
-//eller jeg kunne lave oninput = funktion() i alle inputfelterne i HTML-filen
-
+//bruges muligvis af næsten alle mine testredskaber, så kan måske definres som funktion i utils. 
 document.querySelectorAll('.'+ "tiMeterGang" +'.input').forEach(item => {
-      item.addEventListener('input', event => {      
-          clearResult_tiMeterGang();
-          document.getElementById("generate_email_btn").style.display = "none";
-        });
-    }); 
-    
-
+    item.addEventListener('input', event => {   
+        document.getElementById(`${item.id}_error`).innerHTML = "";
+        document.getElementById(`${item.id}_error`).style.display = "none";
+        document.getElementById("tiMeterGangOutput").innerHTML = "";
+        document.getElementById("tiMeterGang_generate_email_btn").style.display="none";
+    });
+}); 

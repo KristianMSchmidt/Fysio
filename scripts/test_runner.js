@@ -40,10 +40,15 @@ function run_test_suite(suiteName){
 }
 
 export function run_all_suites(){
-    let num_suites = 0
+    const url_before_test_suites = window.location.href;
+    const hash_before_test_suites = window.location.hash;
+   
+    let num_suites = 0;
     let total_test_num = 0;
     let all_suites_passed = true;
     let all_in_current_passed, num_tests_in_current;
+    
+    
     for(let i= 0; i<all_suites.length; i++){
         let feedback = run_test_suite(all_suites[i]);
         all_in_current_passed = feedback['all_passed'];
@@ -54,12 +59,24 @@ export function run_all_suites(){
             all_suites_passed = false;
         }
     }
+
     if(all_suites_passed){
-        console.log(`Ran ${num_suites} testsuites with a total of ${total_test_num} tests. All passed :=)`);
-        document.getElementById('debug_info').innerHTML += `<br />Ran ${num_suites} testsuites with a total of ${total_test_num} tests. All passed :=)`;
+        console.log(`Ran ${num_suites} test suites with a total of ${total_test_num} tests. All passed :=)`);
+        document.getElementById('debug_info').innerHTML += `<br />Ran ${num_suites} test suites with a total of ${total_test_num} tests. All passed :=)`;
     }
     else{
-        console.log(`Ran ${num_suites} testsuites with a total of ${total_test_num} tests`);
+        console.log(`Ran ${num_suites} test suites with a total of ${total_test_num} tests`);
         document.getElementById('debug_info').innerHTML += " There were errors. Check console";
     }
+
+    window.location.hash = hash_before_test_suites;
+
+    if(!((url_before_test_suites.split('#')[0]==window.location.href.split('#')[0]) && (hash_before_test_suites == window.location.hash))){
+        console.log("WARNING: Test Suites Changed Url");        
+        console.log("url before:", url_before_test_suites);    
+        console.log("url after:", window.location.href);
+        console.log("hash before:", hash_before_test_suites);
+        console.log("hash after:", window.location.hash);
+    }
+    //else{console.log("test suites did not change url or hash")}
 }

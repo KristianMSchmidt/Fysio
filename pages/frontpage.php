@@ -17,85 +17,59 @@
         
         <img src = "images/dfys-logo4.gif" id = "logo" class = "ui-btn  ui-corner-all 
         ui-btn-icon-notext ui-btn-right"> 
-    </div>  
+    </div>  <!-- end of header -->
     
    
     <!-- page content -->   
     <div role="main" class="ui-content">
         <h3>Måleredskaber og test</h3>     
-    
-
-        <!--
-        <form>
-            <fieldset data-role="controlgroup" data-theme="b" data-type="horizontal">
-                <legend>Horizontal:</legend>
-                <input type="radio" name="radio-choice-t-6" id="radio-choice-t-6a" value="on" checked="checked">
-                <label for="radio-choice-t-6a">Alle</label>
-                <input type="radio" name="radio-choice-t-6" id="radio-choice-t-6b" value="off">
-                <label for="radio-choice-t-6b">Krop & Funktion</label>
-        <input type="radio" name="radio-choice-t-6" id="radio-choice-t-6c" value="other">
-        <label for="radio-choice-t-6c">Specialer</label></fieldset>
-        </form> -->
-
-
-        <form>
-        <fieldset data-role="controlgroup">
-            <legend></legend>
-            <label for="select1">Select A</label>
-            <select name="select1" onchange="selectionHandler('overkategori')" id="select1">
-            <option value="Krop&funktion">Krop & Funktion</option>
-            <option value="Specialer">Specialer</option>
-            <option value="Vis alle">Alle måleredskaber</option>
- 
-        </select>
-        </fieldset>
-        </form>
-
-        <form>
-        <fieldset data-role="controlgroup" id="Krop&funktion">
-
-            <label for="select2a">Select A</label>
-            <select name="select2a" onchange="selectionHandler('underkategori')" id="select2a">
-
-            <option value="Nakke/ryg">Nakke/ryg</option>
-            <option value="Skulder">Skulder</option>
-            <option value="Hofte">Hofte</option>
-            <option value="Knæ">Knæ</option>
-            <option value="Ankel">Ankel</option>
-            <option value="Balance">Balance</option>
-            <option value="Gang">Gang</option>
-            <option value="Mobilitet">Mobilitet</option>
-            <option value="Funktion">Funktion(niveau/motorisk)</option>
-            <option value="Smerte">Smerte</option>     
-            <option value="Kondition">Kondition</option>
-            <option value="Livskvalitet">Livskvalitet</option>           
-            </select>
-        </fieldset>
-
-        <fieldset data-role="controlgroup" id="Specialer" style="display:none">
-
-            <label for="select2b">Select A</label>
-            <select name="select2b" onchange="selectionHandler('underkategori')" id="select2b">
-
-            <option value="Geronto">Geronto-geriatri</option>
-            <option value="HLI-fys">Hjerte, lunge og intensiv fysioterapi</option>
-            <option value="Idræt">Idræt</option>
-            <option value="Musku">Muskuloskeletale lidelser</option>
-            <option value="Neuro">Neurologi</option>
-            <option value="PsPs">Psykiatri og psykosomatik</option>
-            <option value="Pædiatri">Pædiatri</option>
-            <option value="Urologi">Urologi</option>
-            <option value="Rehab">Rehabilitering</option>
-            <option value="Sundhed">Sundhedsfremme og forebyggelser</option>              
-            </select>
-
-        </fieldset>
-
-                
-        </form style="display:block">
-            <input id ="searchInput" placeholder="Søg i alle målereskaber" value = ""/> 
-        <form>
-
+   
+            <fieldset data-role="controlgroup">
+                <legend></legend> <!-- optional text -->
+                <label for="select1">Select A</label>
+                <select name="select1" onchange="selectionHandler('overkategori')" id="select1">
+                    <option value="Krop&funktion">Krop & Funktion</option>
+                    <option value="Specialer">Specialer</option>
+                    <option value="Vis alle">Alle måleredskaber</option>
+                </select>
+            </fieldset>
+   
+            <fieldset data-role="controlgroup" id="Krop&funktion">
+                <label for="select2a">Select A</label>
+                <select name="select2a" onchange="selectionHandler('underkategori')" id="select2a">
+                    <option value="Nakke/ryg">Nakke/ryg</option>
+                    <option value="Skulder">Skulder</option>
+                    <option value="Hofte">Hofte</option>
+                    <option value="Knæ">Knæ</option>
+                    <option value="Ankel">Ankel</option>
+                    <option value="Balance">Balance</option>
+                    <option value="Gang">Gang</option>
+                    <option value="Mobilitet">Mobilitet</option>
+                    <option value="Funktion">Funktion(niveau/motorisk)</option>
+                    <option value="Smerte">Smerte</option>     
+                    <option value="Kondition">Kondition</option>
+                    <option value="Livskvalitet">Livskvalitet</option>           
+                </select>
+            </fieldset>
+   
+            <fieldset data-role="controlgroup" id="Specialer" style="display:none">
+                <label for="select2b">Select A</label>
+                <select name="select2b" onchange="selectionHandler('underkategori')" id="select2b">
+                    <option value="Geronto">Geronto-geriatri</option>
+                    <option value="HLI-fys">Hjerte, lunge og intensiv fysioterapi</option>
+                    <option value="Idræt">Idræt</option>
+                    <option value="Musku">Muskuloskeletale lidelser</option>
+                    <option value="Neuro">Neurologi</option>
+                    <option value="PsPs">Psykiatri og psykosomatik</option>
+                    <option value="Pædiatri">Pædiatri</option>
+                    <option value="Urologi">Urologi</option>
+                    <option value="Rehab">Rehabilitering</option>
+                    <option value="Sundhed">Sundhedsfremme og forebyggelser</option>              
+                </select>
+            </fieldset>
+   
+            <input id ="searchInput" placeholder="Søg i alle målereskaber" value = "" autocomplete = "off"/> 
+   
         <!-- LINK TIL SAMTLIGE TEST I ALFABETISK RÆKKEFØLGE -->
         <ul data-role="listview" data-inset="true" date-theme ="a">
         
@@ -240,7 +214,7 @@
    
         <p id="debug_info" style="color:red; text-align:center; display:none">Debug mode: </p>
    
-    </div>
+    </div><!-- end of page content -->   
 
     <!-- Menu panel -->
     <div data-role="panel" data-position = "left" id="mypanel">
