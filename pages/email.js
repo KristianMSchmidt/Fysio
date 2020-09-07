@@ -44,12 +44,33 @@ function generate_url(testId){
 
 function sendEmailBtnHandler(){ 
     email_clear_input_errors();
-    email_clear_status_text();;
+    email_clear_status_text();
+    
+    function checkEmailForm(){
+        let emailAddress = document.getElementById("emailAddress").value; 
+        let emailContent = document.getElementById("emailContent").value;
 
-
+        if(emailAddress == ""){            
+            return "no email address";
+        }
+        if (!emailAddress.includes("@")){
+            return "invalid email address";
+        }
+        if (!emailAddress.includes(".")){
+            return "invalid email address";
+        }
+        if (emailContent == ""){
+            return "email address valid, but no content";
+        }
+        else{
+            return "ready to send";
+        }
+    }
+    /* Sat ud af drift, da den afviste nogle gyldige adresser - fx med æ,ø og å.
+       Det er brugerens eget andsvar at taste gyldig adresse
     function checkEmailForm(){
         let emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-        
+        console.log(emailReg);
         let emailAddress = document.getElementById("emailAddress").value; 
         let emailContent = document.getElementById("emailContent").value;
 
@@ -66,7 +87,7 @@ function sendEmailBtnHandler(){
         else{
             return "ready to send";
         }
-    }
+    } */
 
     let emailAddress = document.getElementById("emailAddress").value; 
     let emailSubject = document.getElementById("emailSubject").value;
@@ -74,16 +95,15 @@ function sendEmailBtnHandler(){
 
 
     let checkEmailFormResponse = checkEmailForm();
-    console.log(checkEmailFormResponse);
     switch (checkEmailFormResponse){
 
     case "no email address":
-        document.getElementById("emailAddress_error").innerHTML="Angiv en email adresse";
+        document.getElementById("emailAddress_error").innerHTML="Angiv en emailadresse";
         document.getElementById("emailAddress_error").style.display = "block";
     break;
 
     case "invalid email address": 
-        document.getElementById("emailAddress_error").innerHTML="Angiv en gyldig email adresse";
+        document.getElementById("emailAddress_error").innerHTML="Angiv en gyldig emailadresse";
         document.getElementById("emailAddress_error").style.display = "block";
     break;
 
@@ -93,8 +113,8 @@ function sendEmailBtnHandler(){
     break;
 
     case "ready to send": 
-        console.log("about to send...")
-        document.getElementById("emailStatusText").innerHTML="Behandler email ...";
+        //console.log("about to send...")
+        document.getElementById("emailStatusText").innerHTML="Behandler email...";
         $.ajax({
             url: window.location.href.split("#")[0]+"pages/email_handler.php",
             type: 'POST',
@@ -116,11 +136,11 @@ function sendEmailBtnHandler(){
             document.getElementById("emailStatusText").innerHTML = response;
         })
         .fail(function(){
-            console.log("Ajax error. Perhaps you are off-line? ");
-            document.getElementById("emailStatusText").innerHTML = "Mail not sent. Perhaps you are offline?";
+            //console.log("Ajax error. Perhaps you are off-line? ");
+            document.getElementById("emailStatusText").innerHTML = "Mail not sent. Check email address and internet connection?";
         })
         .always(function(){
-            console.log("complete");
+            //console.log("complete");
         });
     break;
     }

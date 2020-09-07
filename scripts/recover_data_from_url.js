@@ -25,8 +25,15 @@ export function recover_data_from_url(url=window.location.href){
     });
 
     // Press 'beregn button' after recovering data, such that result gets shown
-    let fn_name = url.split('#')[1] + "_beregner";
-    eval(fn_name)();
+    try{
+        let fn_name = url.split('#')[1] + "_beregner";
+        eval(fn_name)();
+    }
+    catch{
+        console.log(url.split("#"))
+        console.log(url.split('#')[1] + "_beregner");
+        console.log(`Warning from recover: The URL ${url} does not countaing a function name after Hash`);
+    }
 }
 
   

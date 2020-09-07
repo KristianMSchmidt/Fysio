@@ -1,6 +1,7 @@
 import {tiMeterGang_testSuite} from '../pages/redskaber/tiMeterGang_testsuite.js';
 import {seksMinGang_testSuite} from '../pages/redskaber/seksMinGang_testsuite.js';
 import {DOM_testSuite} from './testSuites/DOM_testsuite.js';
+import {email_test_suite} from '../pages/email_test_suite.js';
 //console.log("try this service when app online! https://validator.w3.org/")
 
 
@@ -8,6 +9,7 @@ let all_suites = [
     tiMeterGang_testSuite, 
     seksMinGang_testSuite,
     DOM_testSuite,
+    email_test_suite
 ]
 
 function run_test_suite(suiteName){

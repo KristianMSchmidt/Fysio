@@ -1,13 +1,13 @@
-<!-- Start of email-page -->
 <!-- On writing HTML in mail....
 fx making link active.... https://www.webhostingtalk.com/showthread.php?t=416467 -->
 
 
+
+<!-- Start of email-page -->
 <div data-role="page" id="email" data-theme ="a"> 
 
     <!-- header -->
-    <?php include 'redskaber/commons/header_with_back_button.php' ?>
-    
+    <?php include 'redskaber/commons/header_with_back_button.php' ?>    
   
     <!-- content -->
     <div role="main" class="ui-content">

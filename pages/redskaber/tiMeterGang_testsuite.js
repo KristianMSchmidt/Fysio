@@ -371,8 +371,7 @@ export function tiMeterGang_testSuite(){
 
         //simulate input event
         let event = new Event('input', { 'bubbles': true, 'cancelable': true });
-        var el = document.getElementById("tiMeterGang_tid1");
-        el.dispatchEvent(event);
+        document.getElementById("tiMeterGang_tid1").dispatchEvent(event);
 
         actual[1] = document.getElementById("tiMeterGang_tid1_error").style.display;
         expected[1] = "none"
