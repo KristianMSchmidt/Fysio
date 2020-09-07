@@ -1,3 +1,5 @@
+//Jeg tester ikke på responsen fra ajax og de mulige fejl- og succesmeddelses ifm dette. 
+
 export function email_test_suite(){
 
     function reset(){
