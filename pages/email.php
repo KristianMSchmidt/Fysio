@@ -35,7 +35,7 @@ fx making link active.... https://www.webhostingtalk.com/showthread.php?t=416467
         <button id ="sendEmailBtn" type="button" onclick ="sendEmailBtnHandler()" >Send</button> 
         
         <!-- Paragraph: Mail status -->
-        <p id="emailStatusText" style = "text-align:center; font-style: italic;"></p>  
+        <p id="emailStatusText" style="text-align:center; font-style: italic;"></p>  
 
     </div><!-- /content -->
 </div><!-- /page -->

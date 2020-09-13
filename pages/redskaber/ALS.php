@@ -15,7 +15,7 @@
       
         <!-- dette bruges måske af alle mine test-sider, så kode-stumpen kan evt includes fra common -->
         <!-- fejlmeddelelse -->
-        <p id="ALS_error" style="text-align:center; color:red"></p> 
+        <p id="ALS_error" class="errorMgs"></p> 
         <!-- Resultat-->
         <p id="ALSOutput"></p>
 

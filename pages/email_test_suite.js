@@ -9,7 +9,7 @@ export function email_test_suite(){
         
         document.getElementById("emailAddress_error").innerHTML = "";
         document.getElementById("emailAddress_error").style.display = "none"
-    
+        
         document.getElementById("emailSubject_error").innerHTML = "";
         document.getElementById("emailSubject_error").style.display = "none"
 

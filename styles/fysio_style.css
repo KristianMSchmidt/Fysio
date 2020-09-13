@@ -2,6 +2,7 @@
     color: red;
     display: none;
 }
+
 .text-center{
     text-align:center
 }
@@ -9,6 +10,7 @@
 /*Dette virker ikke, gad vide hvorfor? Sikkert fordi der er noget jquery-css, som skal overrides*/
 .testLink {
     font-weight: normal;
+    display: none;
 }
 
 /* gør headeren højere*/
