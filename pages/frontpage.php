@@ -1,4 +1,3 @@
-<!-- Frontpage -->
 <div data-role="page" id="frontpage" data-theme ="a">
 
     <!-- header -->

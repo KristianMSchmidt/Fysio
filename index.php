@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php include "htmlhead.php" ?>
+<?php include "htmlhead.php"?>
+
 </head>
 
 <body>
